@@ -6,3 +6,6 @@ To install Lua, use this command:
 ```
 sudo apt install lua5.2
 ```
+
+##Usage guide
+In order to use the script
