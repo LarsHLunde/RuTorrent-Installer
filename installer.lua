@@ -48,7 +48,7 @@ if inputdir ~= "" then
 end
 print(torrentdir .. " will be used as rtorrent directory")
 
-local dircheck = assert(io.popen("cd " .. torrentdir, "r"))
+local dircheck = assert(io.popen("cd " .. torrentdir .. "2>&1", "r"))
 local dircheck_data = dircheck:read('*all')
 dircheck:close()
 
