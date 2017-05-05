@@ -56,6 +56,8 @@ if dircheck_data ~= "" then
 	local super_dir = torrentdir:reverse()
 	local new_dir = super_dir:sub(1,super_dir:find("/" )-1)
 	super_dir = super_dir:sub(super_dir:find("/" )+1)
+	new_dir = new_dir:reverse()
+	super_dir = super_dir:reverse()
 	
 	print(super_dir)
 	print(new_dir)
