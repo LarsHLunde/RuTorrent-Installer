@@ -44,7 +44,7 @@ print(messages[3])
 for i = 1, #commands do
 	local x, y = commands[i]:find(";")
 	print(commands[i]:sub(x+1))
-	print(commands[i]:sub(1,x-1))
+	os.execute(commands[i]:sub(1,x-1))
 
 end
 
