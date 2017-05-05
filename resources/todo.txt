@@ -5,3 +5,21 @@ Add screen session to startup
 Edit timeout for apache
 LOADS of text
 actually runing
+
+Status:
+Get user input for homedir w/ warning:				Not started
+Dependencies: 													Done
+Install XML-RPC: 													Done
+Install LibTorrent:												Done
+Install rTorrent:													Partial
+Configure rTorrent:												Partial
+Automatically Start rTorrent on System Boot:		Done
+Install Web Server Dependencies:						Done
+Configure Apache:												Done?
+Create an SSL Certificate:									N/A
+Configure Apache Access:									Not Started
+Install ruTorrent Dependencies:							Done
+Download ruTorrent:											Done
+Configure ruTorrent:											Partial
+Configure ruTorrent Plugins:								Done
+Create ruTorrent Credentials:								Not Started

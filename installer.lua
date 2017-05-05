@@ -20,9 +20,13 @@ for i = 1, #commands do
 	os.execute(commands[i]:sub(1,x-1))
 end
 
+local whoami = assert(io.popen("whoami", "r"))
+local homedir = whoami:read('*all')
+whoami:close()
+homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
 
 os.execute("sudo lua ./resources/rewriter.lua ")
 print("Restarting apache")
-os.execute(sudo service apache2 restart >> /dev/null)
+os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")
-os.execute(screen -S rtorrent -fa -d -m rtorrent)
+os.execute("screen -S rtorrent -fa -d -m rtorrent")

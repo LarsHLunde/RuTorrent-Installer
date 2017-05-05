@@ -3,19 +3,14 @@
 ## Dependecies
 This script installer is made in Lua,
 and as such Lua is required.
-To install Lua, use this command:
-```
-sudo apt install lua5.2
-```
 
-## Usage
-In order to use the script, click the green button
-in the top right over this box, download the zip and unzip 
-on your pi or if you have git installed:
+
+## Installment
+In order to install RuTorrent on your pi copy
+this in to your terminal
 ```
+sudo apt-get install lua5.2 git
 git clone https://github.com/LarsHLunde/RuTorrent-Installer.git
-```
-In order to start the script run:
-```
+cd RuTorrent-Installer
 lua installer.lua
 ```
