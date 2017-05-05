@@ -28,10 +28,10 @@ function replaceVars(file,keywords,replacees,replacers)
 end
 
 print("Rewriting rutorrent config file")
-local config_file = "/var/www/html/rutorrent"
-local config_keywords = {"\"php\" 	=>","\"curl\"	=>","\"gzip\"	=>","\"id\"	=>","\"stat\"	=>"}
-local config_replacees = {"\'\'","\'\'","\'\'","\'\'","\'\'"}
-local config_replacers = {"'/usr/bin/php'","'/usr/bin/curl'","'/bin/gzip'","'/usr/bin/id'","'/usr/bin/stat'"}
+local config_file = "/var/www/html/rutorrent/conf/config.php"
+local config_keywords = {"\"php\" 	=>","\"curl\"	=>","\"gzip\"	=>","\"id\"	=>","\"stat\"	=>", "$topDirectory"}
+local config_replacees = {"\'\'","\'\'","\'\'","\'\'","\'\'","\'/\'"}
+local config_replacers = {"'/usr/bin/php'","'/usr/bin/curl'","'/bin/gzip'","'/usr/bin/id'","'/usr/bin/stat'","\'".. arg[1] .. "\'"}
 --replaceVars(config_file,config_keywords,config_replacees,config_replacers)
 
 

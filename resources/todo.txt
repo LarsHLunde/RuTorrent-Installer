@@ -8,6 +8,7 @@ actually runing
 
 Status:
 Get user input for homedir w/ warning:				Not started
+Check that user is on internet								Done
 Dependencies: 													Done
 Install XML-RPC: 													Done
 Install LibTorrent:												Done
