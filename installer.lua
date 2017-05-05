@@ -34,12 +34,20 @@ else
 	os.execute("rm success.txt")
 end
 
-print("Please enter location of torrent downloads")
+print("Please enter location of the rtorrent downloads")
 print("If you use the same media as your system is on")
 print("the entire operating system will start getting stuttery")
 print("So I suggest you use something like a USB stick or ")
 print("external hard drive. Press enter to leave as default")
 io.write("[" .. torrentdir .. "]")
+io.flush()
+local inputdir = io.read()
+
+if inputdir ~= "" then
+	print(inputdir .. " will be used as rtorrent directory")
+else
+	print(torrentdir .. " will be used as rtorrent directory")
+end
 --[[
 for i = 1, #commands do
 	local x, y = commands[i]:find(";")
