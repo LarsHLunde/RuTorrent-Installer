@@ -14,7 +14,7 @@ local whoami = assert(io.popen("whoami", "r"))
 local homedir = whoami:read('*all')
 whoami:close()
 homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
-torrentdir = homedir .. "/rtorrent"
+local torrentdir = homedir .. "/rtorrent"
 
 print("Welcome to the Raspberry PI RuTorrent Installer")
 print("created by Pyro_Killer")
@@ -44,10 +44,24 @@ io.flush()
 local inputdir = io.read()
 
 if inputdir ~= "" then
-	print(inputdir .. " will be used as rtorrent directory")
-else
-	print(torrentdir .. " will be used as rtorrent directory")
+	torrentdir = inputdir
 end
+print(torrentdir .. " will be used as rtorrent directory")
+
+local dircheck = assert(io.popen("cd " .. torrentdir, "r"))
+local dircheck_data = dircheck:read('*all')
+dircheck:close()
+
+if dircheck_data == "" then
+	print("it's empty")
+	
+else
+	print("it's not empty")
+	print(dircheck_data)
+end
+
+
+
 --[[
 for i = 1, #commands do
 	local x, y = commands[i]:find(";")
