@@ -4,3 +4,4 @@ Edit rtorrent.rc for that case
 Add screen session to startup
 Edit timeout for apache
 LOADS of text
+actually runing

@@ -1,0 +1,3 @@
+Welcome to the Raspberry PI RuTorrent Installer
+created by Pyro_Killer
+It is currently in early pre-dev and will not work at all
