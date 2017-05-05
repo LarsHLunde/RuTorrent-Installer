@@ -25,20 +25,20 @@ sudo apt-get install -y apache2-utils >> log.txt;Installing apache2-utils
 sudo apt-get install -y libapache2-mod-php5 >> log.txt;Installing libapache2-mod-php5
 sudo a2enmod auth_digest >> log.txt;Activating apache2 login
 svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> log.txt;Downloading XML-RPC
-cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> log.txt;Configuring XML-RPC
+cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> log.txt 2>>log.txt;Configuring XML-RPC
 cd /tmp/xmlrpc-c && make -j2 >> log.txt;Making XML-RPC
 cd /tmp/xmlrpc-c && sudo make install >> log.txt;Installing XML-RPC
-cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz >> log.txt;Downloading LibTorrent
+cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> log.txt;Downloading LibTorrent
 cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> log.txt;Extracting LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> log.txt;Using autogen on LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./configure >> log.txt;Configuring LibTorrent
-cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt; Making LibTorrent
+cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent (warning this takes a long time)
 cd /tmp/libtorrent-0.13.6 && sudo make install >> log.txt; Installing LibTorrent
-cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz >> log.txt;Downloading rTorrent
+cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> log.txt;Downloading rTorrent
 cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> log.txt;Extracting rTorrent
 cd /tmp/rtorrent-0.9.6 && ./autogen.sh >> log.txt;Runing autogen on rTorrent
 cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> log.txt;Configuring rTorrent
-cd /tmp/rtorrent-0.9.6 && make -j2 >> log.txt;Making rTorrent
+cd /tmp/rtorrent-0.9.6 && make -j2 >> log.txt;Making rTorrent (warning this takes a long time)
 cd /tmp/rtorrent-0.9.6 && sudo make install >> log.txt;Installing rTorrent
 cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> log.txt;Runing ldconfig
 cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent >> log.txt;Downloading RuTorrent
