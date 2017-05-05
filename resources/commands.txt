@@ -1,4 +1,4 @@
-touch log.txt >> log.txt;Starting log file
+touch log.txt;Starting log file
 sudo apt update >> log.txt;Updating system install lists
 sudo apt install -y build-essential >> log.txt;Installing build-essential
 sudo apt install -y subversion >> log.txt;Installing subversion
