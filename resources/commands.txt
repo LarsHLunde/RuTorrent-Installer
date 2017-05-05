@@ -1,5 +1,5 @@
 touch log.txt;Starting log file
-sudo apt-get update >> log.txt;Updating system install lists
+sudo apt-get update >> log.txt;Updating package manager
 sudo apt-get install -y build-essential >> log.txt;Installing build-essential
 sudo apt-get install -y subversion >> log.txt;Installing subversion
 sudo apt-get install -y autoconf >> log.txt;Installing autoconf
@@ -32,22 +32,23 @@ cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> log.t
 cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> log.txt;Extracting LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> log.txt;Using autogen on LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./configure >> log.txt;Configuring LibTorrent
-cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent (warning this takes a long time)
-cd /tmp/libtorrent-0.13.6 && sudo make install >> log.txt; Installing LibTorrent
+cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent
+cd /tmp/libtorrent-0.13.6 && sudo make install >> log.txt;Installing LibTorrent
 cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> log.txt;Downloading rTorrent
 cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> log.txt;Extracting rTorrent
 cd /tmp/rtorrent-0.9.6 && ./autogen.sh >> log.txt;Runing autogen on rTorrent
-cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> log.txt;Configuring rTorrent
+cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> log.txt;Configuring rTorrent (warning this takes a while)
 cd /tmp/rtorrent-0.9.6 && make -j2 >> log.txt;Making rTorrent (warning this takes a long time)
 cd /tmp/rtorrent-0.9.6 && sudo make install >> log.txt;Installing rTorrent
 cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> log.txt;Runing ldconfig
-cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent >> log.txt;Downloading RuTorrent
-cd /var/www/html && sudo rm -r rutorrent/plugins >> log.txt;Removing original plugins
-cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> log.txt; Installing new plugins
-cd /var/www/html && sudo chown -R www-data:www-data rutorrent >> log.txt;Changing owner of RuTorrent directory
-cd /var/www/html && sudo chmod -R 755 rutorrent >> log.txt;Changing access to RuTorrent directory
-sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> log.txt;Removing old RuTorrent plugin config
-sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini >> log.txt;Copying new plugin config file
-sudo cp ./resources/default /etc/apache2/sites-available/default >> log.txt;Replacing apache default file
+cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent >> /dev/null;Downloading RuTorrent
+cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
+cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null; Installing new plugins
+cd /var/www/html && sudo chown -R www-data:www-data rutorrent >> /dev/null;Changing owner of RuTorrent directory
+cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to RuTorrent directory
+sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
+sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Copying new plugin config file
+sudo cp ./resources/default /etc/apache2/sites-available/default >> /dev/null;Replacing apache default file
 sudo service apache2 restart >> log.txt;Restarting apache
 screen -S rtorrent -fa -d -m rtorrent >> log.txt;Starting rTorrent
+sudo rm -r -f /tmp/* ; Cleaning up
