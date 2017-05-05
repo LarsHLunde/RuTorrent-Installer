@@ -1,5 +1,5 @@
 # RuTorrent-Installer
-#WARNING: This program does not work yet
+# WARNING: This program does not work yet
 ## Dependecies
 This script installer is made in Lua,
 and as such Lua is required.
