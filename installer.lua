@@ -59,8 +59,16 @@ if dircheck_data ~= "" then
 	new_dir = new_dir:reverse()
 	super_dir = super_dir:reverse()
 	
-	print(super_dir)
-	print(new_dir)
+	dircheck = assert(io.popen("cd " .. super_dir .. " 2>&1", "r"))
+	local dircheck_data = dircheck:read('*all')
+	dircheck:close()
+	
+	if dircheck_data == "" then
+		os.execute("cd  " .. super_dir .. " && mkdir " .. new_dir )
+	else	
+		print("The location you entered is invalid")
+		os.exit()
+	end
 
 end
 
