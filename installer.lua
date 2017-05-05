@@ -52,12 +52,14 @@ local dircheck = assert(io.popen("cd " .. torrentdir .. " 2>&1", "r"))
 local dircheck_data = dircheck:read('*all')
 dircheck:close()
 
-if dircheck_data == "" then
-	print("it's empty")
+if dircheck_data ~= "" then
+	local super_dir = torrentdir:reverse()
+	local new_dir = super_dir:sub(1,super_dir:find("/" )-1)
+	super_dir = super_dir:sub(super_dir:find("/" )+1)
 	
-else
-	print("it's not empty")
-	print(dircheck_data)
+	print(super_dir)
+	print(new_dir)
+
 end
 
 
