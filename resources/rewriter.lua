@@ -45,7 +45,7 @@ replaceVars(startup_fix_file,startup_fix_keywords,startup_fix_replacees,startup_
 local startup_file = "/etc/rc.local"
 local startup_keywords = {"exit 0"}
 local startup_replacees = {"exit 0"}
-local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\"" .. arg[3] ..  "\nexit 0"}
+local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3] ..  "\nexit 0"}
 replaceVars(startup_file,startup_keywords,startup_replacees,startup_replacers)
 
 

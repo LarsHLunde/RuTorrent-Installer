@@ -22,4 +22,7 @@ Install ruTorrent Dependencies:							Done
 Download ruTorrent:											Done
 Configure ruTorrent:											Done?
 Configure ruTorrent Plugins:								Done
-Create ruTorrent Credentials:								Done?
+Create ruTorrent Credentials:								Research
+Remove non working credentials 
+from current build												not yet started
+Fix rc.local configuration										nys
