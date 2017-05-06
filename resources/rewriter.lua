@@ -1,6 +1,6 @@
--- The first argument is where the rTorrent downloading
+-- The first argument is where the rTorrent  directory
 ---files should be placed. The second argument is the home 
--- firectory of
+-- directory of the user
 
 function replaceVars(file,keywords,replacees,replacers)
 	local edit_file = io.open(file, "r")

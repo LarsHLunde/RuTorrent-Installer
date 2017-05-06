@@ -13,6 +13,7 @@ file2table("./resources/commands.txt", commands)
 local whoami = assert(io.popen("whoami", "r"))
 local homedir = whoami:read('*all')
 whoami:close()
+local uid = homedir
 homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
 local torrentdir = homedir .. "/rtorrent"
 
@@ -46,7 +47,6 @@ local inputdir = io.read()
 if inputdir ~= "" then
 	torrentdir = inputdir
 end
-print(torrentdir .. " will be used as rtorrent directory")
 
 local dircheck = assert(io.popen("cd " .. torrentdir .. " 2>&1", "r"))
 local dircheck_data = dircheck:read('*all')
@@ -72,7 +72,14 @@ if dircheck_data ~= "" then
 
 end
 
+print(torrentdir .. " will be used as rtorrent directory")
 
+if torrentdir:sub(torrentdir:len()) == "/" then 
+	torrentdir = torrentdir:sub(1,torrentdir:len()-1) 
+end
+
+os.execute("sudo mkdir -p " ..  torrentdir .. "/{.session,~watch}")
+os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 --[[
 for i = 1, #commands do
@@ -87,7 +94,7 @@ end
 
 
 --[[
-os.execute("sudo lua ./resources/rewriter.lua ".. somethingorother .. homedir)
+os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. "/ " .. homedir .. "/")
 print("Restarting apache")
 os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")

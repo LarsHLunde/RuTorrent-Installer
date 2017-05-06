@@ -1,5 +1,6 @@
 touch log.txt;Starting log file
 sudo apt-get update >> log.txt;Updating package manager
+sudo apt-get install -y wget >> log.txt;Installing wget
 sudo apt-get install -y build-essential >> log.txt;Installing build-essential
 sudo apt-get install -y subversion >> log.txt;Installing subversion
 sudo apt-get install -y autoconf >> log.txt;Installing autoconf
