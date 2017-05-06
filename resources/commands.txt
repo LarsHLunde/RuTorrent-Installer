@@ -1,47 +1,47 @@
-touch log.txt;Starting log file
-sudo apt-get update >> log.txt;Updating package manager
-sudo apt-get install -y wget >> log.txt;Installing wget
-sudo apt-get install -y build-essential >> log.txt;Installing build-essential
-sudo apt-get install -y subversion >> log.txt;Installing subversion
-sudo apt-get install -y autoconf >> log.txt;Installing autoconf
-sudo apt-get install -y screen >> log.txt;Installing screen
-sudo apt-get install -y g++ >> log.txt;Installing g++
-sudo apt-get install -y gcc >> log.txt;Installing gcc
-sudo apt-get install -y ntp >> log.txt;Installing ntp
-sudo apt-get install -y curl >> log.txt;Installing curl
-sudo apt-get install -y comerr-dev >> log.txt;Installing comerr-dev
-sudo apt-get install -y pkg-config >> log.txt;Installing pkg-config
-sudo apt-get install -y cfv >> log.txt;Installing cfv
-sudo apt-get install -y libtool >> log.txt;Installing libtool
-sudo apt-get install -y libssl-dev >> log.txt;Installing libssl-dev
-sudo apt-get install -y libncurses5-dev >> log.txt;Installing libncurses5-dev
-sudo apt-get install -y ncurses-term >> log.txt;Installing ncurses-term
-sudo apt-get install -y libsigc++-2.0-dev >> log.txt;Installing libsigc++-2.0-dev
-sudo apt-get install -y libcppunit-dev >> log.txt;Installing libcppunit-dev
-sudo apt-get install -y libcurl3 >> log.txt;Installing libcurl3
-sudo apt-get install -y libcurl4-openssl-dev >> log.txt;Installing libcurl4-openssl-dev
-sudo apt-get install -y git >> log.txt;Installing git
-sudo apt-get install -y apache2 >> log.txt;Installing apache2
-sudo apt-get install -y apache2-utils >> log.txt;Installing apache2-utils
-sudo apt-get install -y libapache2-mod-php5 >> log.txt;Installing libapache2-mod-php5
-sudo a2enmod auth_digest >> log.txt;Activating apache2 login
-svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> log.txt;Downloading XML-RPC
-cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> log.txt 2>>log.txt;Configuring XML-RPC
-cd /tmp/xmlrpc-c && make -j2 >> log.txt 2>> log.txt ;Making XML-RPC
-cd /tmp/xmlrpc-c && sudo make install >> log.txt;Installing XML-RPC
-cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> log.txt;Downloading LibTorrent
-cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> log.txt;Extracting LibTorrent
-cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> log.txt;Using autogen on LibTorrent
-cd /tmp/libtorrent-0.13.6 && ./configure >> log.txt;Configuring LibTorrent
-cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent (warning this takes a while)
-cd /tmp/libtorrent-0.13.6 && sudo make install >> log.txt;Installing LibTorrent
-cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> log.txt;Downloading rTorrent
-cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> log.txt;Extracting rTorrent
-cd /tmp/rtorrent-0.9.6 && ./autogen.sh >> log.txt;Runing autogen on rTorrent
-cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> log.txt;Configuring rTorrent (warning this takes a while)
-cd /tmp/rtorrent-0.9.6 && make -j2 >> log.txt;Making rTorrent (warning this takes a long time)
-cd /tmp/rtorrent-0.9.6 && sudo make install >> log.txt;Installing rTorrent
-cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> log.txt;Runing ldconfig
+sudo apt-get update >> /dev/null;Updating package manager
+sudo apt-get install -y wget >> /dev/null;Installing wget
+sudo apt-get install -y build-essential >> /dev/null;Installing build-essential
+sudo apt-get install -y subversion >> /dev/null;Installing subversion
+sudo apt-get install -y autoconf >> /dev/null;Installing autoconf
+sudo apt-get install -y screen >> /dev/null;Installing screen
+sudo apt-get install -y g++ >> /dev/null;Installing g++
+sudo apt-get install -y gcc >> /dev/null;Installing gcc
+sudo apt-get install -y ntp >> /dev/null;Installing ntp
+sudo apt-get install -y curl >> /dev/null;Installing curl
+sudo apt-get install -y comerr-dev >> /dev/null;Installing comerr-dev
+sudo apt-get install -y pkg-config >> /dev/null;Installing pkg-config
+sudo apt-get install -y cfv >> /dev/null;Installing cfv
+sudo apt-get install -y libtool >> /dev/null;Installing libtool
+sudo apt-get install -y libssl-dev >> /dev/null;Installing libssl-dev
+sudo apt-get install -y libncurses5-dev >> /dev/null;Installing libncurses5-dev
+sudo apt-get install -y ncurses-term >> /dev/null;Installing ncurses-term
+sudo apt-get install -y libsigc++-2.0-dev >> /dev/null;Installing libsigc++-2.0-dev
+sudo apt-get install -y libcppunit-dev >> /dev/null;Installing libcppunit-dev
+sudo apt-get install -y libcurl3 >> /dev/null;Installing libcurl3
+sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-openssl-dev
+sudo apt-get install -y git >> /dev/null;Installing git
+sudo apt-get install -y apache2 >> /dev/null;Installing apache2
+sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
+sudo apt-get install -y libapache2-mod-php5 >> /dev/null;Installing libapache2-mod-php5
+sudo apt-get install -y mediainfo >> /dev/null;Installing mediainfo
+sudo a2enmod auth_digest >> /dev/null;Activating apache2 login
+svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> /dev/null;Downloading XML-RPC
+cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> /dev/null 2>>/dev/null;Configuring XML-RPC
+cd /tmp/xmlrpc-c && make -j2 >> /dev/null 2>> /dev/null ;Making XML-RPC
+cd /tmp/xmlrpc-c && sudo make install >> /dev/null;Installing XML-RPC
+cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> /dev/null;Downloading LibTorrent
+cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> /dev/null;Extracting LibTorrent
+cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> /dev/null;Using autogen on LibTorrent
+cd /tmp/libtorrent-0.13.6 && ./configure >> /dev/null;Configuring LibTorrent
+cd /tmp/libtorrent-0.13.6 && make -j2 >> /dev/null;Making LibTorrent (warning this takes a while)
+cd /tmp/libtorrent-0.13.6 && sudo make install >> /dev/null;Installing LibTorrent
+cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> /dev/null;Downloading rTorrent
+cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> /dev/null;Extracting rTorrent
+cd /tmp/rtorrent-0.9.6 && ./autogen.sh >> /dev/null;Runing autogen on rTorrent
+cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> /dev/null;Configuring rTorrent (warning this takes a while)
+cd /tmp/rtorrent-0.9.6 && make -j2 >> /dev/null;Making rTorrent (warning this takes a long time)
+cd /tmp/rtorrent-0.9.6 && sudo make install >> /dev/null;Installing rTorrent
+cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> /dev/null;Runing ldconfig
 cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent >> /dev/null;Downloading RuTorrent
 cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
 cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
