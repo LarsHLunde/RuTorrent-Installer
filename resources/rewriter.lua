@@ -1,6 +1,6 @@
--- The first argument is where the rTorrent  directory
----files should be placed. The second argument is the home 
--- directory of the user
+-- The first argument is where the rTorrent  directory files should be placed. 
+-- The second argument is the home directory of the user
+-- The third argument is the user name
 
 function replaceVars(file,keywords,replacees,replacers)
 	local edit_file = io.open(file, "r")
@@ -37,14 +37,15 @@ replaceVars(config_file,config_keywords,config_replacees,config_replacers)
 
 print("Adding rtorrent to startup")
 local startup_fix_file = "/etc/rc.local"
-local startup_fix_keywords = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi "}
-local startup_fix_replacees = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi "}
+local startup_fix_keywords = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
+local startup_fix_replacees = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
 local startup_fix_replacers = {""}
 replaceVars(startup_fix_file,startup_fix_keywords,startup_fix_replacees,startup_fix_replacers)
+
 local startup_file = "/etc/rc.local"
 local startup_keywords = {"exit 0"}
 local startup_replacees = {"exit 0"}
-local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi \nexit 0"}
+local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\"" .. arg[3] ..  "\nexit 0"}
 replaceVars(startup_file,startup_keywords,startup_replacees,startup_replacers)
 
 

@@ -94,7 +94,7 @@ end
 
 
 
-os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir)
+os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir .. " " .. uid)
 print("Please enter the username for the RuTorrent login")
 io.write("Login: ")
 io.flush()
