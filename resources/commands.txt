@@ -33,7 +33,7 @@ cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> log.t
 cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> log.txt;Extracting LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> log.txt;Using autogen on LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./configure >> log.txt;Configuring LibTorrent
-cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent
+cd /tmp/libtorrent-0.13.6 && make -j2 >> log.txt;Making LibTorrent (warning this takes a while)
 cd /tmp/libtorrent-0.13.6 && sudo make install >> log.txt;Installing LibTorrent
 cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> log.txt;Downloading rTorrent
 cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> log.txt;Extracting rTorrent
