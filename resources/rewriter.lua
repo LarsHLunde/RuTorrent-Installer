@@ -37,14 +37,14 @@ local config_replacers = {"'/usr/bin/php'","'/usr/bin/curl'","'/bin/gzip'","'/us
 
 print("Adding rtorrent to startup")
 local startup_fix_file = "/etc/rc.local"
-local startup_fix_keywords = {"su -c "screen -S rtorrent -fa -d -m rtorrent" pi "}
-local startup_fix_replacees = {"su -c "screen -S rtorrent -fa -d -m rtorrent" pi "}
+local startup_fix_keywords = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi "}
+local startup_fix_replacees = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi "}
 local startup_fix_replacers = {""}
 --replaceVars(startup_fix_file,startup_fix_keywords,startup_fix_replacees,startup_fix_replacers)
 local startup_file = "/etc/rc.local"
 local startup_keywords = {"exit 0"}
 local startup_replacees = {"exit 0"}
-local startup_replacers = {"su -c "screen -S rtorrent -fa -d -m rtorrent" pi \nexit 0"}
+local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" pi \nexit 0"}
 --replaceVars(startup_file,startup_keywords,startup_replacees,startup_replacers)
 
 
@@ -52,7 +52,13 @@ print("Rewriting the rTorrent config file")
 local torrentrc_file = arg[2] .. "/.rtorrent.rc"
 local torrentrc_keywords = {"KEYWORD"}
 local torrentrc_replacees = {"KEYWORD"}
-local torrentrc_replacers = {"arg[1]"}
+local torrentrc_replacers = {arg[1]}
 --replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 
+print("Rewriting apache2 configuration file")
+local torrentrc_file = "/etc/apache2/apache2.conf"
+local torrentrc_keywords = {"Timeout"}
+local torrentrc_replacees = {"300"}
+local torrentrc_replacers = {"30"}
+--replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 

@@ -7,20 +7,19 @@ LOADS of text
 actually runing
 
 Status:
-Get user input for homedir w/ warning:				Not started
+Get user input for homedir w/ warning:				Done
 Check that user is on internet								Done
 Dependencies: 													Done
 Install XML-RPC: 													Done
 Install LibTorrent:												Done
-Install rTorrent:													Partial
-Configure rTorrent:												Partial
+Install rTorrent:													Done
+Configure rTorrent:												Done
 Automatically Start rTorrent on System Boot:		Done
 Install Web Server Dependencies:						Done
 Configure Apache:												Done?
 Create an SSL Certificate:									N/A
-Configure Apache Access:									Not Started
 Install ruTorrent Dependencies:							Done
 Download ruTorrent:											Done
-Configure ruTorrent:											Partial
+Configure ruTorrent:											Done?
 Configure ruTorrent Plugins:								Done
-Create ruTorrent Credentials:								Not Started
+Create ruTorrent Credentials:								Done?

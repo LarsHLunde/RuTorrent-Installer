@@ -81,23 +81,29 @@ end
 os.execute("sudo mkdir -p " ..  torrentdir .. "/{.session,~watch}")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
---[[
+
+
 for i = 1, #commands do
 	local x, y = commands[i]:find(";")
 	print(commands[i]:sub(x+1))
 	os.execute(commands[i]:sub(1,x-1))
 end
 
---]]
-
----[[
 
 
---[[
-os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. "/ " .. homedir .. "/")
+
+
+os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir)
+print("Please enter the username for the RuTorrent login")
+io.write("Login: ")
+io.flush()
+local login = io.read()
+os.execute("sudo htdigest -c /etc/apache2/.htpasswd rutorrent " .. login)
+
+
 print("Restarting apache")
 os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")
 os.execute("screen -S rtorrent -fa -d -m rtorrent")
---]]
+
 
