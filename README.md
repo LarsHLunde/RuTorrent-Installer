@@ -7,11 +7,16 @@ and as such Lua is required.
 
 ## Installment
 In order to install RuTorrent on your pi copy
-this in to your terminal
+this in to your terminal on individual lines
 ```
 sudo apt-get update
 sudo apt-get install -y lua5.2 git
 git clone https://github.com/LarsHLunde/RuTorrent-Installer.git
 cd RuTorrent-Installer
 lua installer.lua
+```
+
+or just copy the monster line in to your terminal:
+```
+sudo apt-get update && sudo apt-get install -y lua5.2 git && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
 ```
