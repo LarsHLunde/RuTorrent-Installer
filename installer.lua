@@ -13,7 +13,7 @@ file2table("./resources/commands.txt", commands)
 local whoami = assert(io.popen("whoami", "r"))
 local homedir = whoami:read('*all')
 whoami:close()
-local uid = homedir
+local uid = homedir:sub(1,homedir:len()-1)
 homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
 local torrentdir = homedir .. "/rtorrent"
 
