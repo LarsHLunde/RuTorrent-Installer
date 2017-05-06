@@ -78,7 +78,8 @@ if torrentdir:sub(torrentdir:len()) == "/" then
 	torrentdir = torrentdir:sub(1,torrentdir:len()-1) 
 end
 
-os.execute("sudo mkdir -p " ..  torrentdir .. "/{.session,~watch}")
+os.execute("sudo mkdir " ..  torrentdir .. "/.session")
+os.execute("sudo mkdir " ..  torrentdir .. "/watch")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 
