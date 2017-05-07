@@ -38,10 +38,8 @@ function replaceLine(file,indentifier,replacer)
 	edit_file:close()
 	
 	for i = 1, #text do
-		for j = 1, #keywords do
-			if text[i]:sub(1,indentifier:len()) == indentifier then
-				text[i] = replacer
-			end
+		if text[i]:sub(1,indentifier:len()) == indentifier then
+			text[i] = replacer
 		end
 	end
 	
