@@ -81,7 +81,7 @@ replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_repl
 
 print("Rewriting apache2 configuration file")
 local apache_file = "/etc/apache2/apache2.conf"
-local apache_keywords = "Timeout"
+local apache_indentifier = "Timeout"
 local apache_replacer = "Timeout 30"
 replaceLine(apache_file,apache_indentifier,apache_replacer)
 
