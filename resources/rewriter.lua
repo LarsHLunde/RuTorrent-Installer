@@ -5,6 +5,7 @@
 function replaceVars(file,keywords,replacees,replacers)
 	local edit_file = io.open(file, "r")
 	local text = {}
+	
 	for line in edit_file:lines() do
 		table.insert (text, line)
 	end
@@ -14,6 +15,32 @@ function replaceVars(file,keywords,replacees,replacers)
 		for j = 1, #keywords do
 			if text[i]:match(keywords[j]) then
 				text[i] = text[i]:gsub(replacees[j],replacers[j])
+			end
+		end
+	end
+	
+	edit_file = io.open(file, "w")
+	
+	for i = 1, #text do
+		edit_file:write(text[i] .. "\n")
+	end
+	edit_file:close()
+
+end
+
+function replaceLine(file,indentifier,replacer)
+	local edit_file = io.open(file, "r")
+	local text = {}
+	
+	for line in edit_file:lines() do
+		table.insert (text, line)
+	end
+	edit_file:close()
+	
+	for i = 1, #text do
+		for j = 1, #keywords do
+			if text[i]:sub(1,indentifier:len()) == indentifier then
+				text[i] = replacer
 			end
 		end
 	end
@@ -37,16 +64,14 @@ replaceVars(config_file,config_keywords,config_replacees,config_replacers)
 
 print("Adding rtorrent to startup")
 local startup_fix_file = "/etc/rc.local"
-local startup_fix_keywords = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
-local startup_fix_replacees = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
-local startup_fix_replacers = {""}
-replaceVars(startup_fix_file,startup_fix_keywords,startup_fix_replacees,startup_fix_replacers)
+local startup_fix_indentifier = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
+local startup_fix_replacer = {""}
+replaceLine(startup_fix_file,startup_fix_indentifier,startup_fix_replacer)
 
 local startup_file = "/etc/rc.local"
-local startup_keywords = {"exit 0"}
-local startup_replacees = {"exit 0"}
-local startup_replacers = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3] ..  "\nexit 0"}
-replaceVars(startup_file,startup_keywords,startup_replacees,startup_replacers)
+local startup_indentifier  = {"exit 0"}
+local startup_replacer = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3] ..  "\nexit 0"}
+replaceLine(startup_file,startup_indentifier,startup_replacer)
 
 
 print("Rewriting the rTorrent config file")
@@ -57,9 +82,8 @@ local torrentrc_replacers = {arg[1]}
 replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 
 print("Rewriting apache2 configuration file")
-local torrentrc_file = "/etc/apache2/apache2.conf"
-local torrentrc_keywords = {"Timeout"}
-local torrentrc_replacees = {"300"}
-local torrentrc_replacers = {"30"}
-replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
+local apache_file = "/etc/apache2/apache2.conf"
+local apache_keywords = {"Timeout"}
+local apache_replacer = {"Timeout 30"}
+replaceLine(apache_file,apache_indentifier,apache_replacer)
 
