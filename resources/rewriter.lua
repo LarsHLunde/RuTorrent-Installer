@@ -62,13 +62,13 @@ replaceVars(config_file,config_keywords,config_replacees,config_replacers)
 
 print("Adding rtorrent to startup")
 local startup_fix_file = "/etc/rc.local"
-local startup_fix_indentifier = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]}
-local startup_fix_replacer = {""}
+local startup_fix_indentifier = "su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3]
+local startup_fix_replacer = ""
 replaceLine(startup_fix_file,startup_fix_indentifier,startup_fix_replacer)
 
 local startup_file = "/etc/rc.local"
-local startup_indentifier  = {"exit 0"}
-local startup_replacer = {"su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3] ..  "\nexit 0"}
+local startup_indentifier  = "exit 0"
+local startup_replacer = "su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. arg[3] ..  "\nexit 0"
 replaceLine(startup_file,startup_indentifier,startup_replacer)
 
 
@@ -81,7 +81,7 @@ replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_repl
 
 print("Rewriting apache2 configuration file")
 local apache_file = "/etc/apache2/apache2.conf"
-local apache_keywords = {"Timeout"}
-local apache_replacer = {"Timeout 30"}
+local apache_keywords = "Timeout"
+local apache_replacer = "Timeout 30"
 replaceLine(apache_file,apache_indentifier,apache_replacer)
 
