@@ -50,6 +50,5 @@ cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to 
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Inserting new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Installing .rtorrent.rc
-sudo cp ./resources/default /etc/apache2/sites-available/default >> /dev/null;Replacing apache default file
 sudo a2enmod auth_digest >> /dev/null;Activating apache2 authentication
 sudo rm -r -f /tmp/* ;Cleaning up
