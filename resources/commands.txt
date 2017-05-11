@@ -42,9 +42,9 @@ cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> /dev/null;Configuring r
 cd /tmp/rtorrent-0.9.6 && make -j2 >> /dev/null;Making rTorrent (warning this takes a long time)
 cd /tmp/rtorrent-0.9.6 && sudo make install >> /dev/null;Installing rTorrent
 cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> /dev/null;Runing ldconfig
-cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent >> /dev/null;Downloading RuTorrent
+cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent 2>> /dev/null;Downloading RuTorrent
 cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
-cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins 2>> /dev/null;Installing new plugins
+cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
 cd /var/www/html && sudo chown -R www-data:www-data rutorrent;Changing owner of RuTorrent directory
 cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to RuTorrent directory
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config

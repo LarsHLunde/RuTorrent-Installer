@@ -85,8 +85,8 @@ local apache_indentifier = "Timeout"
 local apache_replacer = "Timeout 30"
 replaceLine(apache_file,apache_indentifier,apache_replacer)
 
-print("Rewriting /etc/apache2/sitest-enabled/000-default.conf")
-local default_conf_file = "/etc/apache2/sitest-enabled/000-default.conf"
+print("Rewriting /etc/apache2/sites-enabled/000-default.conf")
+local default_conf_file = "/etc/apache2/sites-enabled/000-default.conf"
 local default_conf_indentifier = "</VirtualHost>"
 local default_conf_replacer = "\t<Directory \"/var/www/html/rutorrent\">\n\t\tAuthName \"RuTorrent Login\"\n\t\tAuthUserFile /etc/apache2/.htpasswd\n\t\tRequire valid-user\n\t</Directory>\n</VirtualHost>"
 replaceLine(default_conf_file,default_conf_indentifier,default_conf_replacer)
