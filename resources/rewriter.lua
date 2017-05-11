@@ -72,16 +72,23 @@ local startup_replacer = "su -c \"screen -S rtorrent -fa -d -m rtorrent\" " .. a
 replaceLine(startup_file,startup_indentifier,startup_replacer)
 
 
-print("Rewriting the rTorrent config file")
+print("Rewriting .rtorrent.rc")
 local torrentrc_file = arg[2] .. "/.rtorrent.rc"
 local torrentrc_keywords = {"KEYWORD"}
 local torrentrc_replacees = {"KEYWORD"}
 local torrentrc_replacers = {arg[1]}
 replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 
-print("Rewriting apache2 configuration file")
+print("Rewriting /etc/apache2/apache2.conf")
 local apache_file = "/etc/apache2/apache2.conf"
 local apache_indentifier = "Timeout"
 local apache_replacer = "Timeout 30"
 replaceLine(apache_file,apache_indentifier,apache_replacer)
+
+print("Rewriting /etc/apache2/sitest-enabled/000-default.conf")
+local default_conf_file = "/etc/apache2/sitest-enabled/000-default.conf"
+local default_conf_indentifier = "</VirtualHost>"
+local default_conf_replacer = "\t<Directory \"/var/www/html/rutorrent\">\n\t\tAuthName \"RuTorrent Login\"\n\t\tAuthUserFile /etc/apache2/.htpasswd\n\t\tRequire valid-user\n\t</Directory>\n</VirtualHost>"
+replaceLine(default_conf_file,default_conf_indentifier,default_conf_replacer)
+
 
