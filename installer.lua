@@ -99,7 +99,7 @@ print("Please enter the username for the RuTorrent login")
 io.write("Login: ")
 io.flush()
 local login = io.read()
-os.execute("sudo htdigest -c /etc/apache2/.htpasswd rutorrent " .. login)
+os.execute("sudo htpasswd -c /etc/apache2/.htpasswd " .. login)
 
 
 print("Restarting apache")
