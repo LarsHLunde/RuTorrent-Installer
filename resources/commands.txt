@@ -53,6 +53,3 @@ cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to 
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
-sudo cp ./resources/auth-basic.conf /etc/apache2/sites-enabled/auth-basic.conf ;Copying auth-basic.conf
-sudo a2dismod auth_digest >> /dev/null;Deactivating digest autentication
-sudo a2enmod auth_basic >> /dev/null;Activating apache2 authentication

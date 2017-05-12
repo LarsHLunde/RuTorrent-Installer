@@ -95,11 +95,6 @@ end
 
 
 os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir .. " " .. uid)
-print("Please enter the username for the RuTorrent login")
-io.write("Login: ")
-io.flush()
-local login = io.read()
-os.execute("sudo htpasswd -c /etc/apache2/.htpasswd " .. login)
 
 
 print("Restarting apache")
