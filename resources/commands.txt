@@ -12,19 +12,16 @@ sudo apt-get install -y comerr-dev >> /dev/null;Installing comerr-dev
 sudo apt-get install -y pkg-config >> /dev/null;Installing pkg-config
 sudo apt-get install -y cfv >> /dev/null;Installing cfv
 sudo apt-get install -y libtool >> /dev/null;Installing libtool
-sudo apt-get install -y libssl-dev >> /dev/null;Installing libssl-dev
 sudo apt-get install -y libncurses5-dev >> /dev/null;Installing libncurses5-dev
 sudo apt-get install -y ncurses-term >> /dev/null;Installing ncurses-term
 sudo apt-get install -y libsigc++-2.0-dev >> /dev/null;Installing libsigc++-2.0-dev
 sudo apt-get install -y libcppunit-dev >> /dev/null;Installing libcppunit-dev
 sudo apt-get install -y libcurl3 >> /dev/null;Installing libcurl3
-sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-openssl-dev
 sudo apt-get install -y git >> /dev/null;Installing git
 sudo apt-get install -y apache2 >> /dev/null;Installing apache2
 sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
 sudo apt-get install -y libapache2-mod-php5 >> /dev/null;Installing libapache2-mod-php5
 sudo apt-get install -y mediainfo >> /dev/null;Installing mediainfo
-sudo a2enmod auth_digest >> /dev/null;Activating apache2 login
 svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> /dev/null;Downloading XML-RPC
 cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> /dev/null 2>>/dev/null;Configuring XML-RPC
 cd /tmp/xmlrpc-c && make -j2 >> /dev/null 2>> /dev/null ;Making XML-RPC
@@ -51,6 +48,6 @@ cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/p
 cd /var/www/html && sudo chown -R www-data:www-data rutorrent;Changing owner of RuTorrent directory
 cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to RuTorrent directory
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
-sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Inserting new RuTorrent plugin config
-sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Installing .rtorrent.rc
-sudo a2enmod auth_digest >> /dev/null;Activating apache2 authentication
+sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
+sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
+sudo cp ./resources/auth-basic.conf /etc/apache2/sites-available/auth-basic.conf;Copying login configuration

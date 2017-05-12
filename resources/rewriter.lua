@@ -85,10 +85,11 @@ local apache_indentifier = "Timeout"
 local apache_replacer = "Timeout 30"
 replaceLine(apache_file,apache_indentifier,apache_replacer)
 
+--[[
 print("Rewriting /etc/apache2/sites-enabled/000-default.conf")
 local default_conf_file = "/etc/apache2/sites-enabled/000-default.conf"
 local default_conf_indentifier = "</VirtualHost>"
 local default_conf_replacer = "    <Directory \"/var/www/html/rutorrent\">\n        AuthType Basic\n        AuthName \"RuTorrent Login\"\n        AuthUserFile /etc/apache2/.htpasswd\n        Require valid-user\n    </Directory>\n</VirtualHost>"
 replaceLine(default_conf_file,default_conf_indentifier,default_conf_replacer)
-
+--]]
 
