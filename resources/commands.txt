@@ -54,4 +54,4 @@ sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
 sudo cp ./resources/auth-basic.conf /etc/apache2/sites-enabled/auth-basic.conf ;Copying auth-basic.conf
 sudo a2dismod auth_digest >> /dev/null;Deactivating digest autentication
-sudo a2enmod auth_basic >> /dev/null;Activating apache2 authentication
+sudo a2enmod auth_basic >> /dev/null;Activating basic authentication
