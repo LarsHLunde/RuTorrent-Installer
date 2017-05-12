@@ -45,7 +45,7 @@ cd ./temp/rtorrent-0.9.6 && make -j2 >> /dev/null;Making rTorrent (warning this 
 cd ./temp/rtorrent-0.9.6 && sudo make install >> /dev/null;Installing rTorrent
 cd ./temp/rtorrent-0.9.6 && sudo ldconfig >> /dev/null;Runing ldconfig
 rm ./temp/rtorrent-0.9.6 -rf >>/dev/null;Removing rTorrent source files
-rm ./temp -rf; Cleaning up
+rm ./temp -rf;Cleaning up
 cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent 2>> /dev/null;Downloading RuTorrent
 cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
 cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
