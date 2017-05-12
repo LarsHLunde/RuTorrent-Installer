@@ -24,7 +24,6 @@ sudo apt-get install -y apache2 >> /dev/null;Installing apache2
 sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
 sudo apt-get install -y libapache2-mod-php5 >> /dev/null;Installing libapache2-mod-php5
 sudo apt-get install -y mediainfo >> /dev/null;Installing mediainfo
-sudo a2enmod auth_digest >> /dev/null;Activating apache2 login
 svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> /dev/null;Downloading XML-RPC
 cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> /dev/null 2>>/dev/null;Configuring XML-RPC
 cd /tmp/xmlrpc-c && make -j2 >> /dev/null 2>> /dev/null ;Making XML-RPC
@@ -53,3 +52,6 @@ cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to 
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
+sudo cp ./resources/auth-basic.conf /etc/apache2/sites-enabled/auth-basic.conf ;Copying auth-basic.conf
+sudo a2dismod auth_digest >> /dev/null;Deactivating digest autentication
+sudo a2enmod auth_basic >> /dev/null;Activating apache2 authentication
