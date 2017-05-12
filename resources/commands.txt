@@ -51,3 +51,4 @@ sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old Ru
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
 sudo cp ./resources/auth-basic.conf /etc/apache2/sites-available/auth-basic.conf;Copying login configuration
+sudo a2enmod auth-basic;Activating apache login
