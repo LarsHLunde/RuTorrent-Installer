@@ -29,12 +29,14 @@ svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable /tmp/xmlrpc-c >> /dev/n
 cd /tmp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> /dev/null 2>>/dev/null;Configuring XML-RPC
 cd /tmp/xmlrpc-c && make -j2 >> /dev/null 2>> /dev/null ;Making XML-RPC
 cd /tmp/xmlrpc-c && sudo make install >> /dev/null;Installing XML-RPC
+rm /tmp/xmlrpc-c -rf >>/dev/null;Removing XML-RPC source files
 cd /tmp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> /dev/null;Downloading LibTorrent
 cd /tmp && tar -zxvf libtorrent-0.13.6.tar.gz >> /dev/null;Extracting LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./autogen.sh >> /dev/null;Using autogen on LibTorrent
 cd /tmp/libtorrent-0.13.6 && ./configure >> /dev/null;Configuring LibTorrent
 cd /tmp/libtorrent-0.13.6 && make -j2 >> /dev/null;Making LibTorrent (warning this takes a while)
 cd /tmp/libtorrent-0.13.6 && sudo make install >> /dev/null;Installing LibTorrent
+rm /tmp/libtorrent-0.13.6 -rf >>/dev/null;Removing LibTorrent source files
 cd /tmp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> /dev/null;Downloading rTorrent
 cd /tmp && tar -zxvf rtorrent-0.9.6.tar.gz >> /dev/null;Extracting rTorrent
 cd /tmp/rtorrent-0.9.6 && ./autogen.sh >> /dev/null;Runing autogen on rTorrent
@@ -42,6 +44,7 @@ cd /tmp/rtorrent-0.9.6 && ./configure --with-xmlrpc-c >> /dev/null;Configuring r
 cd /tmp/rtorrent-0.9.6 && make -j2 >> /dev/null;Making rTorrent (warning this takes a long time)
 cd /tmp/rtorrent-0.9.6 && sudo make install >> /dev/null;Installing rTorrent
 cd /tmp/rtorrent-0.9.6 && sudo ldconfig >> /dev/null;Runing ldconfig
+rm /tmp/rtorrent-0.9.6 -rf >>/dev/null;Removing rTorrent source files
 cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent 2>> /dev/null;Downloading RuTorrent
 cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
 cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
@@ -51,4 +54,3 @@ sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old Ru
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Inserting new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Installing .rtorrent.rc
 sudo a2enmod auth_digest >> /dev/null;Activating apache2 authentication
-sudo rm -r -f /tmp/* ;Cleaning up
