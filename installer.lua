@@ -87,6 +87,7 @@ os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 
 for i = 1, #commands do
+	print(commands[i].sub(1,1) )
 	if commands[i].sub(1,1) ~= "#" then
 		local x, y = commands[i]:find(";")
 		print(commands[i]:sub(x+1))
