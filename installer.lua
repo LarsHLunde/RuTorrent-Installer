@@ -1,3 +1,14 @@
+--[[
+File:						installer.lua
+Version:				1.0
+Author:				Pyro_Killer
+Description:			Main install script for the installer
+
+Dependencies:	resources/rewriter.lua			v1.0
+							resources/commands.txt		v1.0
+							
+--]]
+
 function file2table(file,atable)
 	local fp = io.open(file, "r")
 	for line in fp:lines() do
@@ -87,8 +98,7 @@ os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 
 for i = 1, #commands do
-	print(commands[i].sub(1,1) )
-	if commands[i].sub(1,1) ~= "#" then
+	if commands[i]:sub(1,1) ~= "#" then
 		local x, y = commands[i]:find(";")
 		print(commands[i]:sub(x+1))
 		os.execute(commands[i]:sub(1,x-1))
