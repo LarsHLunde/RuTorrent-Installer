@@ -35,6 +35,7 @@ else
 	os.execute("rm success.txt")
 end
 
+print()
 print("Please enter location of the rtorrent downloads")
 print("If you are runing this on a single board computer like RPi")
 print("I reccomend using an external HDD or USB stick or")
