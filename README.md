@@ -14,11 +14,11 @@ and runs on apache2 web server.
 * Debian Jessie 64-bit
 * Armbian Jessie
 * Ubuntu 14.04 64-bit
+* Debian Jessie 32-bit
+* Ubuntu 14.04 32-bit
 
 ### Presumed working
 * Raspbian Jessie
-* Debian Jessie 32-bit
-* Ubuntu 14.04 32-bit
 
 ## Not working (yet)
 * Ubuntu 16.04 64-bit
@@ -77,7 +77,8 @@ It should't return anything, if you get any other message, do the following step
 
 1. Presuming that you have and know the root password:
 ```
-su root && apt-get install sudo && visudo
+su root
+apt-get install sudo && visudo
 ```
 This should open the nano text editor with the sudoer file.
 
@@ -86,8 +87,14 @@ This should open the nano text editor with the sudoer file.
 root  ALL=(ALL:ALL) ALL
 ```
 
-and the your username in the same format
+and then add your username in the same format
+on the line under it
 ```
 myuser ALL=(ALL:ALL) ALL
 ```
-3. Done, you are now a super user in debian
+3. Done, you are now a super user in debian, run 
+
+```
+sudo -v
+```
+again to confirm
