@@ -1,3 +1,5 @@
+# This is a comment that comments
+# and this is another comment
 sudo apt-get update >> /dev/null;Updating package manager
 sudo apt-get install -y wget >> /dev/null;Installing wget
 sudo apt-get install -y build-essential >> /dev/null;Installing build-essential

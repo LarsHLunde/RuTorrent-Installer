@@ -17,9 +17,9 @@ local uid = homedir:sub(1,homedir:len()-1)
 homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
 local torrentdir = homedir .. "/rtorrent"
 
-print("Welcome to the Raspberry PI RuTorrent Installer")
+print("Welcome to the RuTorrent Installer")
 print("created by Pyro_Killer")
-print("It is currently in early pre-dev and will not work at all")
+print("It works on Ubuntu 14.04 and Debian for ARM and other architectures")
 print("Checking for a working internet connection")
 os.execute("wget http://detectportal.firefox.com/success.txt 2> /dev/null")
 
@@ -36,10 +36,11 @@ else
 end
 
 print("Please enter location of the rtorrent downloads")
-print("If you use the same media as your system is on")
+print("If you are runing this on a single board computer like RPi")
+print("I reccomend using an external HDD or USB stick or")
 print("the entire operating system will start getting stuttery")
-print("So I suggest you use something like a USB stick or ")
-print("external hard drive. Press enter to leave as default")
+print()
+print("Press enter to leave as default")
 io.write("[" .. torrentdir .. "]")
 io.flush()
 local inputdir = io.read()
@@ -85,9 +86,11 @@ os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 
 for i = 1, #commands do
-	local x, y = commands[i]:find(";")
-	print(commands[i]:sub(x+1))
-	os.execute(commands[i]:sub(1,x-1))
+	if commands[i].sub(1,1) ~= "#"
+		local x, y = commands[i]:find(";")
+		print(commands[i]:sub(x+1))
+		os.execute(commands[i]:sub(1,x-1))
+	end
 end
 
 
