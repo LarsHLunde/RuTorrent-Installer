@@ -1,3 +1,15 @@
+#File:						commands.txt
+#Version:				1.1
+#Author:					Pyro_Killer
+#Description:			A long list of commands that requires no input
+#								from the user or script and does most of the installation
+#								# indicates a commented line
+#								command format is: command;printed message
+#
+#Called by:				installer.lua
+#
+#Install dependencies
+#
 sudo apt-get update >> /dev/null;Updating package manager
 sudo apt-get install -y wget >> /dev/null;Installing wget
 sudo apt-get install -y build-essential >> /dev/null;Installing build-essential
@@ -22,14 +34,21 @@ sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-op
 sudo apt-get install -y git >> /dev/null;Installing git
 sudo apt-get install -y apache2 >> /dev/null;Installing apache2
 sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
-sudo apt-get install -y libapache2-mod-php5 >> /dev/null;Installing libapache2-mod-php5
+sudo apt-get install -y libapache2-mod-php5 2>/dev/null >/dev/null;Installing libapache2-mod-php5
+sudo apt-get install -y libapache2-mod-php7.0 2>/dev/null >/dev/null;Installing libapache2-mod-php7.0
 sudo apt-get install -y mediainfo >> /dev/null;Installing mediainfo
+#
+# Download, compile and install XML-RPC
+#
 mkdir temp;Making temporary directory
 svn co -q https://svn.code.sf.net/p/xmlrpc-c/code/stable ./temp/xmlrpc-c >> /dev/null;Downloading XML-RPC
 cd ./temp/xmlrpc-c && ./configure --disable-libwww-client --disable-wininet-client --disable-abyss-server --disable-cgi-server >> /dev/null 2>>/dev/null;Configuring XML-RPC
 cd ./temp/xmlrpc-c && make -j2 >> /dev/null 2>> /dev/null ;Making XML-RPC
 cd ./temp/xmlrpc-c && sudo make install >> /dev/null;Installing XML-RPC
 rm ./temp/xmlrpc-c -rf >>/dev/null;Removing XML-RPC source files
+#
+# Download, compile and install LibTorrent
+#
 cd ./temp && wget http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz 2>> /dev/null;Downloading LibTorrent
 cd ./temp && tar -zxvf libtorrent-0.13.6.tar.gz >> /dev/null;Extracting LibTorrent
 cd ./temp/libtorrent-0.13.6 && ./autogen.sh >> /dev/null;Using autogen on LibTorrent
@@ -37,6 +56,9 @@ cd ./temp/libtorrent-0.13.6 && ./configure >> /dev/null;Configuring LibTorrent
 cd ./temp/libtorrent-0.13.6 && make -j2 >> /dev/null;Making LibTorrent (warning this takes a while)
 cd ./temp/libtorrent-0.13.6 && sudo make install >> /dev/null;Installing LibTorrent
 rm ./temp/libtorrent-0.13.6 -rf >>/dev/null;Removing LibTorrent source files
+#
+# Download, compile and install rTorrent
+#
 cd ./temp && wget http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz 2>> /dev/null;Downloading rTorrent
 cd ./temp && tar -zxvf rtorrent-0.9.6.tar.gz >> /dev/null;Extracting rTorrent
 cd ./temp/rtorrent-0.9.6 && ./autogen.sh >> /dev/null;Runing autogen on rTorrent
@@ -46,14 +68,24 @@ cd ./temp/rtorrent-0.9.6 && sudo make install >> /dev/null;Installing rTorrent
 cd ./temp/rtorrent-0.9.6 && sudo ldconfig >> /dev/null;Runing ldconfig
 rm ./temp/rtorrent-0.9.6 -rf >>/dev/null;Removing rTorrent source files
 rm ./temp -rf;Cleaning up
+#
+# Download and install RuTorrent
+#
 cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent 2>> /dev/null;Downloading RuTorrent
 cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
 cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
 cd /var/www/html && sudo chown -R www-data:www-data rutorrent;Changing owner of RuTorrent directory
 cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to RuTorrent directory
 sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
+#
+# Replacing default files with modified versions in resources
+#
 sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
 sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
 sudo cp ./resources/auth-basic.conf /etc/apache2/sites-enabled/auth-basic.conf ;Copying auth-basic.conf
+#
+# Enabling auth_basic apache module and
+# disabling auth_digest apache module.
+#
 sudo a2dismod auth_digest >> /dev/null;Deactivating digest autentication
 sudo a2enmod auth_basic >> /dev/null;Activating basic authentication

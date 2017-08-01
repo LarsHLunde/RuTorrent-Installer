@@ -1,4 +1,4 @@
-# RuTorrent-Installer v1.0
+# RuTorrent-Installer v1.01
 
 ## Description
 This is a RuTorrent installer for debian based linux systems.
@@ -11,19 +11,21 @@ and runs on apache2 web server.
 
 ## Systems
 ### Working and tested
-* Debian Jessie 64-bit
-* Armbian Jessie
-* Ubuntu 14.04 64-bit
-* Debian Jessie 32-bit
-* Ubuntu 14.04 32-bit
-
-### Presumed working
-* Raspbian Jessie
-
-## Not working (yet)
 * Ubuntu 16.04 64-bit
 * Ubuntu 16.04 32-bit
+* Debian Jessie 64-bit
+* Debian Jessie 32-bit
+* Devuan Jessie 64-bit
+* Devuan Jessie 32-bit
+
+### Presumed working
+* Raspbian
+* Armbian Jessie
 * Armbian Xenial
+
+## Not working (yet)
+* Ubuntu 14.04 64-bit
+* Ubuntu 14.04 32-bit
 
 ## Dependecies
 This script installer is made in Lua,
@@ -48,14 +50,21 @@ or just copy the monster line in to your terminal:
 sudo apt-get update && sudo apt-get install -y lua5.2 git && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
 ```
 
+##Changelog
+###Version 1
+Initial working release
+###Version 1.01
+* Fixed ownership of rtorrent.rc file
+* Re-added seedtime in config
+
 ## Future releases
 ### Version 1.1
+* Add support for xenial with its php7
+
+### Version 1.2
 * Add comments and misc other documentation.
 * Make dialog screens, which I need to learn how to use
 * Make script safe to run multiple times without side effects
-
-### Version 1.2
-* Add support for xenial with its php7
 
 ### Version 1.3
 * Add support for nginx
