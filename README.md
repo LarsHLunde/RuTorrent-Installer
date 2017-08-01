@@ -1,4 +1,4 @@
-# RuTorrent-Installer v1.0
+# RuTorrent-Installer v1.01
 
 ## Description
 This is a RuTorrent installer for debian based linux systems.
@@ -49,6 +49,13 @@ or just copy the monster line in to your terminal:
 ```
 sudo apt-get update && sudo apt-get install -y lua5.2 git && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
 ```
+
+##Changelog
+###Version 1
+Initial working release
+###Version 1.01
+* Fixed ownership of rtorrent.rc file
+* Re-added seedtime in config
 
 ## Future releases
 ### Version 1.1
