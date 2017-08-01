@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # RuTorrent-Installer v1.01
+=======
+# RuTorrent-Installer v1.1
+>>>>>>> refs/remotes/origin/master
 
 ## Description
 This is a RuTorrent installer for debian based linux systems.
@@ -50,6 +54,7 @@ or just copy the monster line in to your terminal:
 sudo apt-get update && sudo apt-get install -y lua5.2 git && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
 ```
 
+<<<<<<< HEAD
 ##Changelog
 ###Version 1
 Initial working release
@@ -60,6 +65,20 @@ Initial working release
 ## Future releases
 ### Version 1.1
 * Add support for xenial with its php7
+=======
+## Changelog
+### Version 1
+Initial working release
+### Version 1.01
+* Fixed ownership of rtorrent.rc file
+* Re-added seedtime in config
+
+### Version 1.1
+* Made compatible with Ubuntu 16.04
+* Lost comaptibility for Ubuntu 14.04
+
+## Future releases
+>>>>>>> refs/remotes/origin/master
 
 ### Version 1.2
 * Add comments and misc other documentation.
