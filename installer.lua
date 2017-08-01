@@ -132,4 +132,6 @@ os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")
 os.execute("screen -S rtorrent -fa -d -m rtorrent")
 
+print("Listening port is: 55555")
+
 
