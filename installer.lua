@@ -1,6 +1,6 @@
 --[[
 File:						installer.lua
-Version:				1.0
+Version:				1.1
 Author:				Pyro_Killer
 Description:			Main install script for the installer.
 
@@ -36,7 +36,7 @@ local torrentdir = homedir .. "/rtorrent"
 -- Welcome messages
 print("Welcome to the RuTorrent Installer")
 print("created by Pyro_Killer")
-print("It works on Ubuntu 14.04 and Debian for ARM and other architectures")
+print("It works on Ubuntu 16.04 and Debian for ARM and other architectures")
 
 -- Check for a captive portal and working internet connection
 print("Checking for a working internet connection")

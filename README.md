@@ -11,21 +11,21 @@ and runs on apache2 web server.
 
 ## Systems
 ### Working and tested
-* Armbian Jessie
+* Ubuntu 16.04 64-bit
+* Ubuntu 16.04 32-bit
 * Debian Jessie 64-bit
 * Debian Jessie 32-bit
-* Ubuntu 14.04 64-bit
-* Ubuntu 14.04 32-bit
 * Devuan Jessie 64-bit
 * Devuan Jessie 32-bit
 
 ### Presumed working
 * Raspbian
+* Armbian Jessie
+* Armbian Xenial
 
 ## Not working (yet)
-* Ubuntu 16.04 64-bit
-* Ubuntu 16.04 32-bit
-* Armbian Xenial
+* Ubuntu 14.04 64-bit
+* Ubuntu 14.04 32-bit
 
 ## Dependecies
 This script installer is made in Lua,

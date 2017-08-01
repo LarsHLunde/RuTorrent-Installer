@@ -1,5 +1,5 @@
 #File:						commands.txt
-#Version:				1.0
+#Version:				1.1
 #Author:					Pyro_Killer
 #Description:			A long list of commands that requires no input
 #								from the user or script and does most of the installation
