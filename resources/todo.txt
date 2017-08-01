@@ -1,0 +1,28 @@
+Add user input for folder
+Create folder subfolders
+Edit rtorrent.rc for that case
+Add screen session to startup
+Edit timeout for apache
+LOADS of text
+actually runing
+
+Status:
+Get user input for homedir w/ warning:				Done
+Check that user is on internet								Done
+Dependencies: 													Done
+Install XML-RPC: 													Done
+Install LibTorrent:												Done
+Install rTorrent:													Done
+Configure rTorrent:												Done
+Automatically Start rTorrent on System Boot:		Done
+Install Web Server Dependencies:						Done
+Configure Apache:												Done?
+Create an SSL Certificate:									N/A
+Install ruTorrent Dependencies:							Done
+Download ruTorrent:											Done
+Configure ruTorrent:											Done?
+Configure ruTorrent Plugins:								Done
+Create ruTorrent Credentials:								Research
+Remove non working credentials 
+from current build												not yet started
+Fix rc.local configuration										nys
