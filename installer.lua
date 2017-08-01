@@ -105,7 +105,7 @@ end
 os.execute("sudo mkdir " ..  torrentdir .. "/.session")
 os.execute("sudo mkdir " ..  torrentdir .. "/watch")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
-
+os.execute("sudo chown " .. uid .. "~/.rtorrent.rc" )
 
 -- Runs all the commands in the commands.txt file
 for i = 1, #commands do
