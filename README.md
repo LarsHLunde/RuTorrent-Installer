@@ -59,12 +59,12 @@ Initial working release
 
 ## Future releases
 ### Version 1.1
+* Add support for xenial with its php7
+
+### Version 1.2
 * Add comments and misc other documentation.
 * Make dialog screens, which I need to learn how to use
 * Make script safe to run multiple times without side effects
-
-### Version 1.2
-* Add support for xenial with its php7
 
 ### Version 1.3
 * Add support for nginx
