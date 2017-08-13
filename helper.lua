@@ -84,6 +84,7 @@ if commandOutput("whoami") == "root\n" or true then
 	
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua\"")
+	os.execute("sudo -u -A " .. newUser .. " \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua\"")
 end
 
+-- git clone -b test https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua helper.lua
