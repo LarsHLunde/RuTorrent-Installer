@@ -83,6 +83,6 @@ if commandOutput("whoami") == "root\n" or true then
 	
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("su - " .. newUser .. " -c \" lua installer.lua\"")
+	os.execute("su - " .. newUser .. " -c \"lua ./installer.lua\"")
 end
 
