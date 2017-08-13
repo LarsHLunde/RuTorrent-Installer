@@ -44,7 +44,7 @@ os.execute("wget http://detectportal.firefox.com/success.txt 2> /dev/null")
 local internetcheck = io.open("success.txt","r")
 
 if internetcheck == nil then
-	print("There appears to be no internet connection")
+	print("There appears to be no internet connection or you don't have write privileges in this folder")
 	os.exit()
 
 else

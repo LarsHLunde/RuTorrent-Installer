@@ -9,7 +9,6 @@ Description:			Helper script for Debian/Devuan and VPSs
 local isRoot = false
 local newUser = ""
 
-
 local function getInput(question)
 	io.write(question)
 	io.flush()
@@ -59,6 +58,8 @@ function swap()
 
 end
 
+pwd = commandOutput("pwd")
+pwd = pwd:sub(1, pwd:len()-1)
 
 if commandOutput("whoami") == "root\n" or true then
 	isRoot = true
@@ -83,6 +84,6 @@ if commandOutput("whoami") == "root\n" or true then
 	
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("su - " .. newUser .. " -c \"cd " .. commandOutput("pwd") .. " && lua /installer.lua\"")
+	os.execute("su - " .. newUser .. " -c \"git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua\"")
 end
 
