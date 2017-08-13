@@ -84,8 +84,6 @@ if you get any other message, do the following steps:
   
 **_WARNING_: This presumes that you have control over the root user of the system**
 
-### Option 1:
-
 1. Copy and paste this line in to terminal:
 ```
 su - root -c "apt-get install sudo && adduser $USER sudo"
@@ -103,36 +101,5 @@ It should ask for your password and return nothing
 sudo -v
 ```
 
-### Option 2:
-
-1. Log in as root
-```
-su root
-```
-
-2. Install sudo program
-```
-apt-get install sudo
-```
-
-3. Add your user to the sudoer group
-```
-adduser MYUSER sudo
-```
-
-4. Log out of root and normal user
-
-```
-exit
-exit
-```
-
-5. Log back in as the your regular user
-
-6. Check that you are part of the sudoers
-It should ask for your password and return nothing
-```
-sudo -v
-```
 
 You can repeat this proccess if needed
