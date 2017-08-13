@@ -72,7 +72,7 @@ if commandOutput("whoami") == "root\n" or true then
 	print("Updating package manager")
 	os.execute("apt-get update > /dev/null")
 	print("Installing sudo and screen")
-	os.execute("apt-get install sudo screen > /dev/null")
+	os.execute("apt-get install sudo screen -y > /dev/null")
 	newUser = getInput("Please enter new users name: ")
 	os.execute("useradd -m " .. newUser)
 	print("Please add a password for the new user:")
