@@ -71,8 +71,8 @@ if commandOutput("whoami") == "root\n" or true then
 	os.execute("mkdir /home 2> /dev/null")
 	print("Updating package manager")
 	os.execute("apt-get update > /dev/null")
-	print("Installing sudo and screen")
-	os.execute("apt-get install sudo screen -y > /dev/null")
+	print("Installing sudo and tmux")
+	os.execute("apt-get install sudo tmux -y > /dev/null")
 	newUser = getInput("Please enter new users name: ")
 	os.execute("useradd -m " .. newUser)
 	print("Please add a password for the new user:")
@@ -84,7 +84,7 @@ if commandOutput("whoami") == "root\n" or true then
 	
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("sudo -s /bin/bash -u " .. newUser .. " \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && screen lua installer.lua\"")
+	os.execute("sudo -s /bin/bash -u " .. newUser .. " \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux lua installer.lua\"")
 end
 
 -- git clone -b test https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua helper.lua
