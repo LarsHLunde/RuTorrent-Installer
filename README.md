@@ -17,9 +17,9 @@ and runs on apache2 web server.
 * Debian Jessie 32-bit
 * Devuan Jessie 64-bit
 * Devuan Jessie 32-bit
+* Raspbian
 
 ### Presumed working
-* Raspbian
 * Armbian Jessie
 * Armbian Xenial
 
@@ -30,7 +30,7 @@ and runs on apache2 web server.
 ## Dependecies
 This script installer is made in Lua,
 and as such Lua is required.
-For people running Debian please see notes
+For people running Debian and Devuan please see notes
 further down the page.
 
 ## Installment
@@ -61,18 +61,13 @@ Initial working release
 * Made compatible with Ubuntu 16.04
 * Lost comaptibility for Ubuntu 14.04
 
-## Future releases
+## Planned features
 
-### Version 1.2
-* Add comments and misc other documentation.
+
 * Make dialog screens, which I need to learn how to use
 * Make script safe to run multiple times without side effects
-
-### Version 1.3
 * Add support for nginx
 * Maybe add support for lighttpd
-
-### Version 1.4
 * Add support for using the reposetory versions of xml-rpc, rtorrent and libtorrent
 
 ## Notes
@@ -85,27 +80,36 @@ sudo -v
 ```
 
 It should't return anything, if you get any other message, do the following steps:
+**_WARNING_: This presumes that you have control over the root user of the system**
 
-1. Presuming that you have and know the root password:
+1. Log in as root
 ```
 su root
-apt-get install sudo && visudo
-```
-This should open the nano text editor with the sudoer file.
-
-2. Find the following line
-```
-root  ALL=(ALL:ALL) ALL
 ```
 
-and then add your username in the same format
-on the line under it
+2. Install sudo program
 ```
-myuser ALL=(ALL:ALL) ALL
+apt-get install sudo
 ```
-3. Done, you are now a super user in debian, run 
 
+3. Add your user to the sudoer group
+```
+adduser MYUSER sudo
+```
+
+4. Log out of root and normal user
+
+```
+exit
+exit
+```
+
+5. Log back in as the your regular user
+
+6. Check that you are part of the sudoers
+It should ask for your password and return nothing
 ```
 sudo -v
 ```
-again to confirm
+
+You can repeat this proccess if needed

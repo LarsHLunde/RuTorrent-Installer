@@ -1,6 +1,6 @@
 --[[
 File:						rewriter.lua
-Version:				1.0
+Version:				1.1
 Author:				Pyro_Killer
 Description:			Rewrites system files with
 							required configurations for RuTorrent
