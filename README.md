@@ -79,7 +79,7 @@ on you being a sudoer. To check if you are a sudoer type in.
 sudo -v
 ```
 
-It should't return anything, if you get any other message, do the following steps:
+It should't return anything, if you get any other message, do the following steps:  
 **_WARNING_: This presumes that you have control over the root user of the system**
 
 1. Log in as root
