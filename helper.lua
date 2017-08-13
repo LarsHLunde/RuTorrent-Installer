@@ -7,6 +7,15 @@ Description:			Helper script for Debian/Devuan and VPSs
 --]]
 
 local isRoot = false
+local newUser = ""
+
+
+local function getInput(question)
+	io.write(question)
+	io.flush()
+	return io.read()
+end
+
 
 local function commandOutput(command)
 	local file = assert(io.popen(command, 'r'))
@@ -16,7 +25,6 @@ local function commandOutput(command)
 end
 
 local function YesorNo()
-
 	local answer
 	repeat
 		io.write("Please answer with y for yes, or n for no: ")
@@ -32,12 +40,49 @@ local function YesorNo()
 
 end
 
-local function root()
-	print("It would appear you are root")
+local function continue()
+	local answer
+	repeat
+		io.write("Are you sure you want to continue? y for yes, or n for no: ")
+		io.flush()
+		answer=io.read()
+	until answer=="y" or answer=="n"
+
+	if answer == "n" then
+		os.exit()
+	end
+
+end
+
+function swap()
+	print("Doing swap stuff")
+
 end
 
 
-print(commandOutput("sudo -v"))
+if commandOutput("whoami") == "root\n" or true then
+	isRoot = true
+	print("It would appear you are root")
+	print("If you have another user it is advisable")
+	print("to use that one instead, or we will make")
+	print("a new user for this installation.")
+	continue()
+	os.execute("mkdir /home 2> /dev/null")
+	print("Updating package manager")
+	os.execute("apt-get update > /dev/null")
+	print("Installing sudo")
+	os.execute("apt-get install sudo > /dev/null")
+	newUser = getInput("Please enter new users name: ")
+	os.execute("useradd -m " .. newUser)
+	print("Please add a password for the new user:")
+	os.execute("passwd " .. newUser)
+	print("Adding user to sudo group")
+	os.execute("adduser " .. newUser .. " sudo")
+	
+	swap()
+	
+	print("The script will now start the main script installation script")
+	continue()
+	os.execute("su - " .. newUser .. " -c \" lua installer.lua\"")
+end
 
-print("Are you the very  model of a modern major general")
-print(YesorNo())
