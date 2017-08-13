@@ -71,7 +71,7 @@ Initial working release
 * Add support for using the reposetory versions of xml-rpc, rtorrent and libtorrent
 
 ## Notes
-I have made the not about the Debian netinst on which I test
+I have made the not about the Debian and Devuan on which I test
 that "sudo" is not installed by default. This program does however depend
 on you being a sudoer. To check if you are a sudoer type in.
 
@@ -79,7 +79,8 @@ on you being a sudoer. To check if you are a sudoer type in.
 sudo -v
 ```
 
-It should't return anything, if you get any other message, do the following steps:  
+It should't return anything ask you for your password and return nothing, 
+if you get any other message, do the following steps:  
 **_WARNING_: This presumes that you have control over the root user of the system**
 
 1. Log in as root
