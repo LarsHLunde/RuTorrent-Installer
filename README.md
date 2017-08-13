@@ -84,6 +84,27 @@ if you get any other message, do the following steps:
   
 **_WARNING_: This presumes that you have control over the root user of the system**
 
+### Option 1:
+
+1. Copy and paste this line in to terminal:
+```
+su - root -c "apt-get install sudo && adduser $USER sudo"
+```
+
+2. Enter the root user password
+
+3. Type in 
+```
+exit
+```
+4. Log back in and check that you are part of the sudoers
+It should ask for your password and return nothing
+```
+sudo -v
+```
+
+### Option 2:
+
 1. Log in as root
 ```
 su root
