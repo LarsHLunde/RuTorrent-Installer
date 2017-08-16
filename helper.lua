@@ -73,8 +73,6 @@ if commandOutput("whoami") == "root\n" or true then
 	os.execute("apt-get update > /dev/null")
 	print("Installing sudo and tmux")
 	os.execute("apt-get install sudo tmux -y > /dev/null")
-	print("Instinalling build-essential for special cases")
-	os.execute("apt-get install build-essential")
 	newUser = getInput("Please enter new users name: ")
 	os.execute("useradd -m " .. newUser)
 	print("Please add a password for the new user:")
@@ -82,12 +80,19 @@ if commandOutput("whoami") == "root\n" or true then
 	print("Adding user to sudo group")
 	os.execute("adduser " .. newUser .. " sudo")
 	
-	swap()
+	print("Are you running the liteserver configuration with Ubuntu 16.04")
+	print("Or another seedbox that does not allow you to change swap location?")
 	
-	print("The script will now start the main script installation script")
-	continue()
-	os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
-	--os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && bash -c \'lua installer.lua\'\"")
+	if YesorNo() then
+		print("The script will now start the main script installation script")
+		continue()
+		os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
+	else
+		swap()
+		print("The script will now start the main script installation script")
+		continue()
+		os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
+	end
 end
 
 -- git clone -b test https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua helper.lua
