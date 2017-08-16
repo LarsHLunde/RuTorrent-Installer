@@ -87,7 +87,7 @@ if commandOutput("whoami") == "root\n" or true then
 		print("The script will now start the main script installation script")
 		continue()
 		--os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
-		os.execute("sudo -i -u "  .. newUser ..  " cd ~ && git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua")
+		os.execute("sudo -i -u "  .. newUser ..  " cd /home/pyro && git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua")
 	else
 		swap()
 		print("The script will now start the main script installation script")
