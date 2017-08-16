@@ -73,6 +73,8 @@ if commandOutput("whoami") == "root\n" or true then
 	os.execute("apt-get update > /dev/null")
 	print("Installing sudo and tmux")
 	os.execute("apt-get install sudo tmux -y > /dev/null")
+	print("Instinalling build-essential for special cases")
+	os.execute("apt-get install build-essential")
 	newUser = getInput("Please enter new users name: ")
 	os.execute("useradd -m " .. newUser)
 	print("Please add a password for the new user:")
