@@ -138,11 +138,21 @@ os.execute("sudo mkdir " ..  torrentdir .. "/watch")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 -- Runs all the commands in the commands.txt file
-for i = 1, #commands_compile do
-	if commands_compile[i]:sub(1,1) ~= "#" then
-		local x, y = commands_compile[i]:find(";")
-		print(commands_compile[i]:sub(x+1))
-		os.execute(commands_compile[i]:sub(1,x-1))
+if compile then
+	for i = 1, #commands_compile do
+		if commands_compile[i]:sub(1,1) ~= "#" then
+			local x, y = commands_compile[i]:find(";")
+			print(commands_compile[i]:sub(x+1))
+			os.execute(commands_compile[i]:sub(1,x-1))
+		end
+	end
+else
+	for i = 1, #commands_install do
+		if commands_install[i]:sub(1,1) ~= "#" then
+			local x, y = commands_install[i]:find(";")
+			print(commands_install[i]:sub(x+1))
+			os.execute(commands_install[i]:sub(1,x-1))
+		end
 	end
 end
 
