@@ -82,6 +82,7 @@ local rc_local = io.open("/etc/rc.local","r")
 if rc_local == nil then
 	rc_local = io.open("/etc/rc.local","w")
 	rc_local:write("#!/bin/sh -e\nexit 0")
+	os.execute("chmod +x /etc/rc.local")
 end
 
 rc_local:close()
