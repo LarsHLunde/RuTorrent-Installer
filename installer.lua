@@ -36,7 +36,7 @@ local uid = tempvar:sub(1,tempvar:len()-1)
 
 local cd_pwd = assert(io.popen("cd ~ && pwd", "r"))
 tempvar = cd_pwd:read('*all')
-cd_pwd:close
+cd_pwd:close()
 
 local homedir = tempvar:sub(1,tempvar:len()-1)
 local torrentdir = homedir .. "/rtorrent"
