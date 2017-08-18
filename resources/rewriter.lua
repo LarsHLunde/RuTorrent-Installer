@@ -103,6 +103,8 @@ local torrentrc_file = arg[2] .. "/.rtorrent.rc"
 local torrentrc_keywords = {"KEYWORD"}
 local torrentrc_replacees = {"KEYWORD"}
 local torrentrc_replacers = {arg[1]}
+print(torrentrc_file)
+print(torrentrc_file)
 replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 
 -- Changes the apache timeout from default, usually 300 seconds
