@@ -81,7 +81,7 @@ local rc_local = io.open("/etc/rc.local","r")
 
 if rc_local == nil then
 	rc_local = io.open("/etc/rc.local","w")
-	file:write("#!/bin/sh -e\nexit 0")
+	rc_local:write("#!/bin/sh -e\nexit 0")
 end
 
 rc_local:close()
