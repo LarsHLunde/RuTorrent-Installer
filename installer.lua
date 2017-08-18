@@ -116,6 +116,7 @@ for i = 1, #commands do
 end
 
 -- Runs the file rewriter script in resources/rewriter.lua
+os.execute("sudo chown " .. uid .. " ~/.rtorrent.rc" )
 os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir .. " " .. uid)
 
 -- Asks the user for desired username and password for the RuTorrent Login
@@ -126,7 +127,6 @@ local login = io.read()
 os.execute("sudo htpasswd -c /etc/apache2/.htpasswd " .. login)
 
 -- Restarts apache and starts rtorrent
-os.execute("sudo chown " .. uid .. " ~/.rtorrent.rc" )
 print("Restarting apache")
 os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")
