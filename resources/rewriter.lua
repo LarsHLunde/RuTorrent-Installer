@@ -99,7 +99,7 @@ replaceLine(startup_file,startup_indentifier,startup_replacer)
 
 -- Inserts the directories that rTorrent requires to work
 print("Rewriting .rtorrent.rc")
-local torrentrc_file = arg[2] .. "/.rtorrent.rc"
+local torrentrc_file = arg[2] .. "~/.rtorrent.rc"
 local torrentrc_keywords = {"KEYWORD"}
 local torrentrc_replacees = {"KEYWORD"}
 local torrentrc_replacers = {arg[1]}
