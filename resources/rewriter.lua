@@ -76,6 +76,17 @@ function replaceLine(file,indentifier,replacer)
 
 end
 
+-- Checks if there is an rc.local file, and if there isn't one, creates one
+local rc_local = io.open("/etc/rc.local","r")
+
+if rc_local == nil then
+	rc_local = io.open("/etc/rc.local","w")
+	file:write("#!/bin/sh -e\nexit 0")
+end
+
+rc_local:close()
+
+
 -- Rewrites the RuTorrent config file to know the basic linux commands
 print("Rewriting rutorrent config file")
 local config_file = "/var/www/html/rutorrent/conf/config.php"
