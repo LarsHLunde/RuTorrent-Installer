@@ -1,5 +1,5 @@
-#File:						commands.txt
-#Version:				1.1
+#File:						commands-compile.txt
+#Version:				1.3
 #Author:					Pyro_Killer
 #Description:			A long list of commands that requires no input
 #								from the user or script and does most of the installation
@@ -10,7 +10,6 @@
 #
 #Install dependencies
 #
-sudo apt-get update >> /dev/null;Updating package manager
 sudo apt-get install -y wget >> /dev/null;Installing wget
 sudo apt-get install -y build-essential >> /dev/null;Installing build-essential
 sudo apt-get install -y subversion >> /dev/null;Installing subversion

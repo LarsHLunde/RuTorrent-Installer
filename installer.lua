@@ -4,8 +4,9 @@ Version:				1.1
 Author:				Pyro_Killer
 Description:			Main install script for the installer.
 
-Dependencies:	resources/rewriter.lua			v1.0
-							resources/commands.txt		v1.0
+Dependencies:	resources/rewriter.lua							v1.0
+							resources/commands_compile.txt		v1.3
+							resources/commands_install.txt			v1.3
 --]]
 
 -- Takes a text file and puts each individual
@@ -22,8 +23,11 @@ end
 
 -- Creates a command table and inserts commands
 --  from the commands.txt in to a table
-local commands = {}
-file2table("./resources/commands.txt", commands)
+local commands_compile = {}
+file2table("./resources/commands-compile.txt", commands_compile)
+
+local commands_install = {}
+file2table("./resources/commands-install.txt", commands_install)
 
 -- Gets the users home directory and saves it to a string
 local tempvar = ""
@@ -115,11 +119,11 @@ os.execute("sudo mkdir " ..  torrentdir .. "/watch")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 -- Runs all the commands in the commands.txt file
-for i = 1, #commands do
-	if commands[i]:sub(1,1) ~= "#" then
-		local x, y = commands[i]:find(";")
-		print(commands[i]:sub(x+1))
-		os.execute(commands[i]:sub(1,x-1))
+for i = 1, #commands_compile do
+	if commands_compile[i]:sub(1,1) ~= "#" then
+		local x, y = commands_compile[i]:find(";")
+		print(commands_compile[i]:sub(x+1))
+		os.execute(commands_compile[i]:sub(1,x-1))
 	end
 end
 
