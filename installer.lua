@@ -26,11 +26,19 @@ local commands = {}
 file2table("./resources/commands.txt", commands)
 
 -- Gets the users home directory and saves it to a string
+local tempvar = ""
+
 local whoami = assert(io.popen("whoami", "r"))
-local homedir = whoami:read('*all')
+tempvar = whoami:read('*all')
 whoami:close()
-local uid = homedir:sub(1,homedir:len()-1)
-homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
+
+local uid = tempvar:sub(1,tempvar:len()-1)
+
+local cd_pwd =  = assert(io.popen("cd ~ && pwd", "r"))
+tempvar = cd_pwd:read('*all')
+cd_pwd:close
+
+local homedir = tempvar:sub(1,tempvar:len()-1)
 local torrentdir = homedir .. "/rtorrent"
 
 -- Welcome messages
