@@ -29,7 +29,8 @@ file2table("./resources/commands-compile.txt", commands_compile)
 local commands_install = {}
 file2table("./resources/commands-install.txt", commands_install)
 
--- Gets the users home directory and saves it to a string
+-- Gets the users home user id, home directory and default rtorrent
+-- directory for use in the rewriter and other misc
 local tempvar = ""
 
 local whoami = assert(io.popen("whoami", "r"))
@@ -44,6 +45,7 @@ cd_pwd:close()
 
 local homedir = tempvar:sub(1,tempvar:len()-1)
 local torrentdir = homedir .. "/rtorrent"
+local compile = true
 
 -- Welcome messages
 print("Welcome to the RuTorrent Installer")
@@ -64,6 +66,23 @@ else
 	internetcheck:close()
 	os.execute("rm success.txt")
 end
+
+
+-- Check if repo version is good enough
+print("Updating package listings")
+os.execute("sudo apt-get update >> /dev/null")
+print("Checking repo version of rTorrent")
+local apt_cache = assert(io.popen("sudo apt-cache policy rtorrent", "r"))
+tempvar = apt_cache:read('*all')
+apt_cache:close()
+
+if tempvar:match("0.9.6") then
+	print("It appears we don't need to compile")
+	compile = false
+else
+	print("It appears you have to compile from source")
+end
+
 
 -- User input for custom rtorrent directory
 print()
