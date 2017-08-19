@@ -87,8 +87,7 @@ function exit_func()
 end
 
 while true do
-	print("1. liteserver installer script\n0. Exit\n")
-	local choice = getInput()
+	local choice = getInput("1. liteserver installer script\n0. Exit\n")
 	
 	if choice == "0" then
 		exit_func()
