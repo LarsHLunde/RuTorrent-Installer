@@ -76,7 +76,7 @@ function liteserver()
 
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("cd /home/" .. newUser ..  " && sudo -i -u " .. newUser ..  " git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && sudo -E -u " .. newUser .. " lua installer.lua")
+	os.execute("cd /home/" .. newUser ..  " && sudo -i -u " .. newUser ..  " git clone -b test https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && sudo -E -u " .. newUser .. " lua installer.lua")
 	print("Script is done")
 end
 
