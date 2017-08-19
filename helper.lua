@@ -88,4 +88,12 @@ end
 
 while true do
 	print("1. liteserver installer script\n0. Exit\n")
-
+	local choice = getInput()
+	
+	if choice == "0" then
+		exit_func()
+	elseif choice == "1" then
+		liteserver()
+	end
+	
+end
