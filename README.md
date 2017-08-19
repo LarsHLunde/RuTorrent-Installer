@@ -1,12 +1,13 @@
-# RuTorrent-Installer v1.1
+# RuTorrent-Installer v1.3
 
 ## Description
 This is a RuTorrent installer for debian based linux systems.
 My original goal for the project was to make a RuTorrent installer
-for the Raspberry Pi 3 running Raspbian-jessie-lite but found quickly
-that it worked on many different Debian based systems.
+for the Raspberry Pi 3 running Raspbian-jessie-lite 
+but found quickly that it worked on many different Debian based systems.
 
 It downloads and compiles XML-RPC, LibTorrent and rTorrent,
+or downloads them from the repo if rTorrent is 0.9.6,
 and runs on apache2 web server.
 
 ## Systems
@@ -15,13 +16,16 @@ and runs on apache2 web server.
 * Ubuntu 16.04 32-bit
 * Debian Jessie 64-bit
 * Debian Jessie 32-bit
+* Debian Stretch 64-bit
+* Debian Stretch 32-bit
 * Devuan Jessie 64-bit
 * Devuan Jessie 32-bit
-* Raspbian
+* Raspbian Jessie
+* Raspbian Stretch
+* Armbian Xenial
 
 ### Presumed working
 * Armbian Jessie
-* Armbian Xenial
 
 ## Not working (yet)
 * Ubuntu 14.04 64-bit
@@ -60,6 +64,15 @@ Initial working release
 ### Version 1.1
 * Made compatible with Ubuntu 16.04
 * Lost comaptibility for Ubuntu 14.04
+
+### Version 1.2
+* Added support for repo installation
+
+### Version 1.3
+* Added a support script for the liteserver.nl VPSs
+* Added support for Debian stretch
+* Cleaned up a lot of dirty hacks
+* Made it self destruct upon completion
 
 ## Planned features
 
