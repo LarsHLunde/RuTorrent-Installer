@@ -76,7 +76,7 @@ function liteserver()
 
 	print("The script will now start the main script installation script")
 	continue()
-	os.execute("sudo -i -u " .. newUser ..  " bash ./resources/liteserver.sh")
+	os.execute("sudo -H -u " .. newUser ..  " bash ./resources/liteserver.sh")
 	print("Script is done")
 end
 
