@@ -99,7 +99,7 @@ if you get any other message, do the following steps:
 
 1. Copy and paste this line in to terminal:
 ```
-su - root -c "apt-get install sudo && adduser $USER sudo"
+su - root -c "apt-get install sudo -y && adduser $USER sudo"
 ```
 
 2. Enter the root user password
