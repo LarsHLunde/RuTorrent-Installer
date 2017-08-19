@@ -1,19 +1,19 @@
 --[[
 File:						helper.lua
-Version:				1.2
+Version:				1.3
 Author:				Pyro_Killer
 Description:			Helper script for Debian/Devuan and VPSs
 
 --]]
 
-
+-- Asks the user for input and returns the string inputed
 local function getInput(question)
 	io.write(question)
 	io.flush()
 	return io.read()
 end
 
-
+-- Runs a command in the console and returns its output
 local function commandOutput(command)
 	local file = assert(io.popen(command, 'r'))
 	local output = file:read('*all')
@@ -21,6 +21,7 @@ local function commandOutput(command)
 	return output
 end
 
+-- Asks the user to answer yes or no, and returns true or false
 local function YesorNo()
 	local answer
 	repeat
@@ -37,6 +38,7 @@ local function YesorNo()
 
 end
 
+-- Allows the user to exit when promped
 local function continue()
 	local answer
 	repeat
@@ -51,6 +53,7 @@ local function continue()
 
 end
 
+-- Function to fix the dependencies in the liteserver.nl VPS
 function liteserver()
 	print("If you have another user it is advisable")
 	print("to use that one instead, or we will make")
@@ -80,6 +83,7 @@ function liteserver()
 	print("Script is done")
 end
 
+-- Auto destruct
 function exit_func()
 	print("Cleaning up..")
 	os.execute("cd .. && rm RuTorrent-Installer/ -rf")
@@ -88,6 +92,7 @@ end
 
 while true do
 	os.execute("clear")
+	print("Welcome to the lua installer helper script\nplease choose an option for your needs")
 	local choice = getInput("1. liteserver installer script\n\n0. Exit\n\nPlease enter your choice: ")
 	
 	if choice == "0" then

@@ -1,10 +1,10 @@
 --[[
 File:						installer.lua
-Version:				1.1
+Version:				1.3
 Author:				Pyro_Killer
 Description:			Main install script for the installer.
 
-Dependencies:	resources/rewriter.lua							v1.0
+Dependencies:	resources/rewriter.lua							v1.3
 							resources/commands_compile.txt		v1.3
 							resources/commands_install.txt			v1.3
 --]]
@@ -68,7 +68,7 @@ else
 end
 
 
--- Check if repo version is good enough
+-- Check if repo version of rtorrent is the correct one
 print("Updating package listings")
 os.execute("sudo apt-get update >> /dev/null")
 print("Checking repo version of rTorrent")
