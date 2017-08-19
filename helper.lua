@@ -6,8 +6,6 @@ Description:			Helper script for Debian/Devuan and VPSs
 
 --]]
 
-local isRoot = false
-local newUser = ""
 
 local function getInput(question)
 	io.write(question)
@@ -53,26 +51,21 @@ local function continue()
 
 end
 
-function swap()
-	print("Doing swap stuff")
-
-end
-
-pwd = commandOutput("pwd")
-pwd = pwd:sub(1, pwd:len()-1)
-
-if commandOutput("whoami") == "root\n" or true then
-	isRoot = true
-	print("It would appear you are root")
+function liteserver()
 	print("If you have another user it is advisable")
 	print("to use that one instead, or we will make")
 	print("a new user for this installation.")
 	continue()
-	os.execute("mkdir /home 2> /dev/null")
 	print("Updating package manager")
-	os.execute("apt-get update > /dev/null")
-	print("Installing sudo and tmux")
-	os.execute("apt-get install sudo tmux -y > /dev/null")
+	os.execute("apt-get update >> /dev/null")
+	print("Installing build essentials (special case")
+	os.execute("apt-get install build-essential")
+	print("Installing sudo")
+	os.execute("apt-get install sudo -y >> /dev/null")
+	os.execute("locale-gen en_US.UTF-8 ")
+	print("Updating locale configuration")
+	os.execute("update-locale LC_ALL=en_US.UTF-8")
+	print("Adding a new user:")
 	newUser = getInput("Please enter new users name: ")
 	os.execute("useradd -m " .. newUser)
 	print("Please add a password for the new user:")
@@ -80,21 +73,19 @@ if commandOutput("whoami") == "root\n" or true then
 	print("Adding user to sudo group")
 	os.execute("adduser " .. newUser .. " sudo")
 	
-	print("Are you running the liteserver configuration with Ubuntu 16.04")
-	print("Or another seedbox that does not allow you to change swap location?")
-	
-	if YesorNo() then
-		print("The script will now start the main script installation script")
-		continue()
-		--os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
-		os.execute("cd /home/" .. newUser ..  " && sudo -i -u " .. newUser ..  " git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && sudo -E -u " .. newUser .. " lua installer.lua")
-	else
-		swap()
-		print("The script will now start the main script installation script")
-		continue()
-		os.execute("su - " .. newUser .. " -s /bin/bash -c \"cd ~ && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && tmux new-session lua installer.lua\"")
-	end
+
+	print("The script will now start the main script installation script")
+	continue()
+	os.execute("cd /home/" .. newUser ..  " && sudo -i -u " .. newUser ..  " git clone -b seedbox https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && sudo -E -u " .. newUser .. " lua installer.lua")
+	print("Script is done")
 end
 
--- git clone -b test https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua helper.lua
--- ls >/dev/null && ls /var/www/html/ >/dev/null && ls /home/pyro/ >/dev/null && rm /var/www/html/rutorrent -rf && rm RuTorrent-Installer -R && rm /home/pyro/RuTorrent-Installer -rf
+function exit_func()
+	print("Cleaning up..")
+	os.execute("cd .. && rm RuTorrent-Installer/ -rf")
+	os.exit()
+end
+
+while true do
+	print("1. liteserver installer script\n0. Exit\n")
+

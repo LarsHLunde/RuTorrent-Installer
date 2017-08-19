@@ -174,5 +174,6 @@ print("Starting rTorrent")
 os.execute("screen -S rtorrent -fa -d -m rtorrent")
 
 print("Listening port is: 55555")
-
+print("Cleaning up")
+os.execute("cd ~ && rm RuTorrent-Installer/ -rf")
 
