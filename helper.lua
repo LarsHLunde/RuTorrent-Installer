@@ -88,7 +88,7 @@ end
 
 while true do
 	os.execute("clear")
-	local choice = getInput("1. liteserver installer script\n\n0. Exit\n\nPlease enter your choice:")
+	local choice = getInput("1. liteserver installer script\n\n0. Exit\n\nPlease enter your choice: ")
 	
 	if choice == "0" then
 		exit_func()
