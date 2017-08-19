@@ -1,0 +1,46 @@
+#File:						commands-install.txt
+#Version:				1.3
+#Author:					Pyro_Killer
+#Description:			A long list of commands that requires no input
+#								from the user or script and does most of the installation
+#								# indicates a commented line
+#								command format is: command;printed message
+#
+#Called by:				installer.lua
+#
+#Install dependencies
+#
+sudo apt-get install -y build-essential >> /dev/null;Installing build-essential
+sudo apt-get install -y subversion >> /dev/null;Installing subversion
+sudo apt-get install -y screen >> /dev/null;Installing screen
+sudo apt-get install -y curl >> /dev/null;Installing curl
+sudo apt-get install -y libcurl3 >> /dev/null;Installing libcurl3
+sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-openssl-dev
+sudo apt-get install -y git >> /dev/null;Installing git
+sudo apt-get install -y apache2 >> /dev/null;Installing apache2
+sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
+sudo apt-get install -y libapache2-mod-php5 2>/dev/null >/dev/null;Installing libapache2-mod-php5
+sudo apt-get install -y libapache2-mod-php7.0 2>/dev/null >/dev/null;Installing libapache2-mod-php7.0
+sudo apt-get install -y mediainfo >> /dev/null;Installing mediainfo
+sudo apt-get install -y rtorrent >> /dev/null;Installing rTorrent
+#
+# Download and install RuTorrent
+#
+cd /var/www/html && sudo git clone https://github.com/Novik/ruTorrent.git rutorrent 2>> /dev/null;Downloading RuTorrent
+cd /var/www/html && sudo rm -r rutorrent/plugins >> /dev/null;Removing original plugins
+cd /var/www/html && sudo svn checkout https://github.com/Novik/ruTorrent/trunk/plugins rutorrent/plugins >> /dev/null;Installing new plugins
+cd /var/www/html && sudo chown -R www-data:www-data rutorrent;Changing owner of RuTorrent directory
+cd /var/www/html && sudo chmod -R 755 rutorrent >> /dev/null;Changing access to RuTorrent directory
+sudo rm -f /var/www/html/rutorrent/conf/plugins.ini >> /dev/null;Removing old RuTorrent plugin config
+#
+# Replacing default files with modified versions in resources
+#
+sudo cp ./resources/plugins.ini /var/www/html/rutorrent/conf/plugins.ini;Copying new RuTorrent plugin config
+sudo cp ./resources/.rtorrent.rc ~/.rtorrent.rc;Copying .rtorrent.rc
+sudo cp ./resources/auth-basic.conf /etc/apache2/sites-enabled/auth-basic.conf ;Copying auth-basic.conf
+#
+# Enabling auth_basic apache module and
+# disabling auth_digest apache module.
+#
+sudo a2dismod auth_digest >> /dev/null;Deactivating digest autentication
+sudo a2enmod auth_basic >> /dev/null;Activating basic authentication

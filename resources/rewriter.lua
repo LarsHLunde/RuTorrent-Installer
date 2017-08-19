@@ -1,6 +1,6 @@
 --[[
 File:						rewriter.lua
-Version:				1.0
+Version:				1.3
 Author:				Pyro_Killer
 Description:			Rewrites system files with
 							required configurations for RuTorrent
@@ -76,6 +76,18 @@ function replaceLine(file,indentifier,replacer)
 
 end
 
+-- Checks if there is an rc.local file, and if there isn't one, creates one
+local rc_local = io.open("/etc/rc.local","r")
+
+if rc_local == nil then
+	rc_local = io.open("/etc/rc.local","w")
+	rc_local:write("#!/bin/sh -e\nexit 0")
+	os.execute("chmod +x /etc/rc.local")
+end
+
+rc_local:close()
+
+
 -- Rewrites the RuTorrent config file to know the basic linux commands
 print("Rewriting rutorrent config file")
 local config_file = "/var/www/html/rutorrent/conf/config.php"
@@ -103,6 +115,8 @@ local torrentrc_file = arg[2] .. "/.rtorrent.rc"
 local torrentrc_keywords = {"KEYWORD"}
 local torrentrc_replacees = {"KEYWORD"}
 local torrentrc_replacers = {arg[1]}
+print(torrentrc_file)
+print(torrentrc_file)
 replaceVars(torrentrc_file,torrentrc_keywords,torrentrc_replacees,torrentrc_replacers)
 
 -- Changes the apache timeout from default, usually 300 seconds
