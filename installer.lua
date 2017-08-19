@@ -1,11 +1,12 @@
 --[[
 File:						installer.lua
-Version:				1.1
+Version:				1.3
 Author:				Pyro_Killer
 Description:			Main install script for the installer.
 
-Dependencies:	resources/rewriter.lua			v1.0
-							resources/commands.txt		v1.0
+Dependencies:	resources/rewriter.lua							v1.3
+							resources/commands_compile.txt		v1.3
+							resources/commands_install.txt			v1.3
 --]]
 
 -- Takes a text file and puts each individual
@@ -22,16 +23,29 @@ end
 
 -- Creates a command table and inserts commands
 --  from the commands.txt in to a table
-local commands = {}
-file2table("./resources/commands.txt", commands)
+local commands_compile = {}
+file2table("./resources/commands-compile.txt", commands_compile)
 
--- Gets the users home directory and saves it to a string
+local commands_install = {}
+file2table("./resources/commands-install.txt", commands_install)
+
+-- Gets the users home user id, home directory and default rtorrent
+-- directory for use in the rewriter and other misc
+local tempvar = ""
+
 local whoami = assert(io.popen("whoami", "r"))
-local homedir = whoami:read('*all')
+tempvar = whoami:read('*all')
 whoami:close()
-local uid = homedir:sub(1,homedir:len()-1)
-homedir = "/home/" .. homedir:sub(1,homedir:len()-1)
+
+local uid = tempvar:sub(1,tempvar:len()-1)
+
+local cd_pwd = assert(io.popen("cd ~ && pwd", "r"))
+tempvar = cd_pwd:read('*all')
+cd_pwd:close()
+
+local homedir = tempvar:sub(1,tempvar:len()-1)
 local torrentdir = homedir .. "/rtorrent"
+local compile = true
 
 -- Welcome messages
 print("Welcome to the RuTorrent Installer")
@@ -44,7 +58,7 @@ os.execute("wget http://detectportal.firefox.com/success.txt 2> /dev/null")
 local internetcheck = io.open("success.txt","r")
 
 if internetcheck == nil then
-	print("There appears to be no internet connection")
+	print("There appears to be no internet connection or you don't have write privileges in this folder")
 	os.exit()
 
 else
@@ -52,6 +66,23 @@ else
 	internetcheck:close()
 	os.execute("rm success.txt")
 end
+
+
+-- Check if repo version of rtorrent is the correct one
+print("Updating package listings")
+os.execute("sudo apt-get update >> /dev/null")
+print("Checking repo version of rTorrent")
+local apt_cache = assert(io.popen("sudo apt-cache policy rtorrent", "r"))
+tempvar = apt_cache:read('*all')
+apt_cache:close()
+
+if tempvar:match("0.9.6") then
+	print("It appears we don't need to compile")
+	compile = false
+else
+	print("It appears you have to compile from source")
+end
+
 
 -- User input for custom rtorrent directory
 print()
@@ -107,15 +138,26 @@ os.execute("sudo mkdir " ..  torrentdir .. "/watch")
 os.execute("sudo chown -R " .. uid .. " " .. torrentdir)
 
 -- Runs all the commands in the commands.txt file
-for i = 1, #commands do
-	if commands[i]:sub(1,1) ~= "#" then
-		local x, y = commands[i]:find(";")
-		print(commands[i]:sub(x+1))
-		os.execute(commands[i]:sub(1,x-1))
+if compile then
+	for i = 1, #commands_compile do
+		if commands_compile[i]:sub(1,1) ~= "#" then
+			local x, y = commands_compile[i]:find(";")
+			print(commands_compile[i]:sub(x+1))
+			os.execute(commands_compile[i]:sub(1,x-1))
+		end
+	end
+else
+	for i = 1, #commands_install do
+		if commands_install[i]:sub(1,1) ~= "#" then
+			local x, y = commands_install[i]:find(";")
+			print(commands_install[i]:sub(x+1))
+			os.execute(commands_install[i]:sub(1,x-1))
+		end
 	end
 end
 
 -- Runs the file rewriter script in resources/rewriter.lua
+os.execute("sudo chown " .. uid .. " ~/.rtorrent.rc" )
 os.execute("sudo lua ./resources/rewriter.lua ".. torrentdir .. " " .. homedir .. " " .. uid)
 
 -- Asks the user for desired username and password for the RuTorrent Login
@@ -126,12 +168,12 @@ local login = io.read()
 os.execute("sudo htpasswd -c /etc/apache2/.htpasswd " .. login)
 
 -- Restarts apache and starts rtorrent
-os.execute("sudo chown " .. uid .. " ~/.rtorrent.rc" )
 print("Restarting apache")
 os.execute("sudo service apache2 restart >> /dev/null")
 print("Starting rTorrent")
 os.execute("screen -S rtorrent -fa -d -m rtorrent")
 
 print("Listening port is: 55555")
-
+print("Cleaning up")
+os.execute("cd ~ && rm RuTorrent-Installer/ -rf")
 
