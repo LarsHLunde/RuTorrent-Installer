@@ -23,8 +23,6 @@ and runs on apache2 web server.
 * Raspbian Jessie
 * Raspbian Stretch
 * Armbian Xenial
-
-### Presumed working
 * Armbian Jessie
 
 ## Not working (yet)
@@ -51,7 +49,7 @@ lua installer.lua
 
 or just copy the monster line in to your terminal:
 ```
-sudo apt-get update && sudo apt-get install -y lua5.2 git && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
+sudo apt-get update && sudo apt-get install -y lua5.2 git sox && git clone https://github.com/LarsHLunde/RuTorrent-Installer.git && cd RuTorrent-Installer && lua installer.lua
 ```
 
 ## Changelog
