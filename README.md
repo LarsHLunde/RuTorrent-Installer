@@ -41,7 +41,7 @@ copy and paste every individual line in
 to your console.
 ```
 sudo apt-get update
-sudo apt-get install -y lua5.2 git
+sudo apt-get install -y lua5.2 git sox
 git clone https://github.com/LarsHLunde/RuTorrent-Installer.git
 cd RuTorrent-Installer
 lua installer.lua
