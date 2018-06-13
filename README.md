@@ -26,6 +26,7 @@ and runs on apache2 web server.
 * Raspbian Stretch
 * Armbian Xenial
 * Armbian Jessie
+* Armbian Stretch
 
 ## Not working (yet)
 * Ubuntu 14.04 64-bit
