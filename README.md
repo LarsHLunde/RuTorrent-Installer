@@ -20,6 +20,8 @@ and runs on apache2 web server.
 * Debian Stretch 32-bit
 * Devuan Jessie 64-bit
 * Devuan Jessie 32-bit
+* Devuan ASCII 64-bit
+* Devuan ASCII 32-bit
 * Raspbian Jessie
 * Raspbian Stretch
 * Armbian Xenial
