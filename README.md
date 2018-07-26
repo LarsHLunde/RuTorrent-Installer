@@ -1,4 +1,4 @@
-# RuTorrent-Installer v1.3
+# RuTorrent-Installer v1.3.1
 
 ## Description
 This is a RuTorrent installer for debian based linux systems.
@@ -75,8 +75,10 @@ Initial working release
 * Cleaned up a lot of dirty hacks
 * Made it self destruct upon completion
 
-## Planned features
+### Version 1.3.1
+* Changed low disk space limit for 10GB to 100MB in .rtorrent.rc
 
+## Planned features
 
 * Make dialog screens, which I need to learn how to use
 * Make script safe to run multiple times without side effects
