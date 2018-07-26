@@ -26,7 +26,7 @@ session = KEYWORD/.session
 schedule = watch_directory,5,5,load_start=KEYWORD/.watch/*.torrent
 
 # Close torrents when diskspace is low.
-schedule = low_diskspace,5,60,close_low_diskspace=10240M
+schedule = low_diskspace,5,60,close_low_diskspace=100M
 
 # The ip address reported to the tracker.
 #ip = 127.0.0.1
