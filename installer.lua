@@ -76,7 +76,7 @@ local apt_cache = assert(io.popen("sudo apt-cache policy rtorrent", "r"))
 tempvar = apt_cache:read('*all')
 apt_cache:close()
 
-if tempvar:match("0.9.6") then
+if tempvar:match("0.9.6") or tempvar:match("0.9.7") then
 	print("It appears we don't need to compile")
 	compile = false
 else
