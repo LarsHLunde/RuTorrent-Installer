@@ -18,7 +18,6 @@ sudo apt-get install -y screen >> /dev/null;Installing screen
 sudo apt-get install -y g++ >> /dev/null;Installing g++
 sudo apt-get install -y gcc >> /dev/null;Installing gcc
 sudo apt-get install -y ntp >> /dev/null;Installing ntp
-sudo apt-get install -y curl >> /dev/null;Installing curl
 sudo apt-get install -y comerr-dev >> /dev/null;Installing comerr-dev
 sudo apt-get install -y pkg-config >> /dev/null;Installing pkg-config
 sudo apt-get install -y cfv >> /dev/null;Installing cfv
@@ -30,6 +29,7 @@ sudo apt-get install -y libsigc++-2.0-dev >> /dev/null;Installing libsigc++-2.0-
 sudo apt-get install -y libcppunit-dev >> /dev/null;Installing libcppunit-dev
 sudo apt-get install -y libcurl3 >> /dev/null;Installing libcurl3
 sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-openssl-dev
+sudo apt-get install -y curl >> /dev/null;Installing curl
 sudo apt-get install -y git >> /dev/null;Installing git
 sudo apt-get install -y apache2 >> /dev/null;Installing apache2
 sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
