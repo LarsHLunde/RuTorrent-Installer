@@ -13,9 +13,9 @@
 sudo apt-get install -y build-essential >> /dev/null;Installing build-essential
 sudo apt-get install -y subversion >> /dev/null;Installing subversion
 sudo apt-get install -y screen >> /dev/null;Installing screen
-sudo apt-get install -y curl >> /dev/null;Installing curl
 sudo apt-get install -y libcurl3 >> /dev/null;Installing libcurl3
 sudo apt-get install -y libcurl4-openssl-dev >> /dev/null;Installing libcurl4-openssl-dev
+sudo apt-get install -y curl >> /dev/null;Installing curl
 sudo apt-get install -y git >> /dev/null;Installing git
 sudo apt-get install -y apache2 >> /dev/null;Installing apache2
 sudo apt-get install -y apache2-utils >> /dev/null;Installing apache2-utils
