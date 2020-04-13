@@ -29,7 +29,7 @@ Armbian Xenial | :heavy_check_mark:
 Armbian Stretch | :heavy_check_mark:
 Armbian Jessie | :heavy_check_mark:
 
-1. I am in the testing phase of making script specific to Buster
+1. I have made a specific version of this script for buster: https://github.com/LarsHLunde/RuTorrent-Installer-Buster
 2. In theory it should work on these systems, I have no intention of testing them
 
 
